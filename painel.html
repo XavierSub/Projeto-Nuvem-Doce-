@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel · Fuga da Prisão Nuvem Doce</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%93%8A%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0c0d0f;--panel:#16181c;--panel2:#1f2228;--line:#30343c;--text:#ecebe6;--muted:#9a9ea6;--orange:#ff8a1f;--yellow:#f5c518;--red:#ff4d4d;--green:#4ade80;--cyan:#5ce1ff;--purple:#c084fc}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;padding:16px;min-height:100vh}
+  .wrap{max-width:1100px;margin:0 auto}
+  .hazard{height:8px;border-radius:4px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 12px,#111 12px 24px);margin-bottom:14px}
+  h1{font-family:'Black Ops One';font-weight:400;font-size:28px;margin-bottom:4px}
+  h2{font-family:'Black Ops One';font-weight:400;font-size:20px;margin:22px 0 10px}
+  .muted{color:var(--muted);font-size:14px}
+  .top{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;flex-wrap:wrap}
+  .btn{all:unset;cursor:pointer;background:var(--orange);color:#1a0d00;font-weight:700;border-radius:10px;padding:10px 14px;font-size:14px}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .btn.small{padding:5px 9px;font-size:12px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .card b{display:block;font-family:'JetBrains Mono';font-size:28px;color:var(--yellow)}
+  .card small{color:var(--muted);font-size:12.5px}
+  .card.on b{color:var(--green)}
+  .bars{display:flex;flex-direction:column;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .bar{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:10px;font-size:14px}
+  .bar .t{height:14px;border-radius:7px;background:var(--panel2);overflow:hidden}
+  .bar .t i{display:block;height:100%;border-radius:7px}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  tr:last-child td{border-bottom:none}
+  .varal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .post{background:#fff6c9;color:#2b2618;border-radius:6px;padding:14px 40px 10px 12px;overflow-wrap:anywhere;box-shadow:0 6px 14px rgba(0,0,0,.4);position:relative;font-size:15px;line-height:1.4}
+  .post:nth-child(3n){transform:rotate(1deg)}.post:nth-child(3n+1){transform:rotate(-1deg)}
+  .post small{display:block;color:#7a6c4a;font-size:12px;margin-top:8px}
+  .post.oculta{opacity:.35;background:#ddd}
+  .post .btn{position:absolute;top:6px;right:6px;background:#2b2618;color:#fff6c9}
+  .login{max-width:380px;margin:12vh auto;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .login input{all:unset;box-sizing:border-box;display:block;width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px;margin:14px 0;font-size:16px}
+  .err{color:var(--red);font-size:14px;min-height:20px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .hidden{display:none!important}
+  .empty{color:var(--muted);padding:16px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hazard"></div>
+
+  <form class="login" id="login">
+    <h1>📊 Painel do professor</h1>
+    <p class="muted">Fuga da Prisão Nuvem Doce · ranking, Varal da Conscientização e acessos.</p>
+    <input type="password" id="senha" placeholder="Senha do painel" autocomplete="current-password" required>
+    <div class="err" id="err"></div>
+    <button class="btn" type="submit">Entrar</button>
+  </form>
+
+  <main id="app" class="hidden">
+    <div class="top">
+      <div><h1>📊 Painel do professor</h1><div class="muted" id="atual">Atualiza sozinho a cada 15 segundos.</div></div>
+      <div class="row">
+        <button class="btn ghost" data-csv="varal">⬇️ Varal (CSV)</button>
+        <button class="btn ghost" data-csv="ranking">⬇️ Ranking (CSV)</button>
+        <button class="btn ghost" data-csv="dispositivos">⬇️ Acessos (CSV)</button>
+        <button class="btn ghost" id="sair">Sair</button>
+      </div>
+    </div>
+    <div class="cards" id="cards"></div>
+    <h2>🏁 Finais alcançados</h2>
+    <div class="bars" id="finais"></div>
+    <h2>📌 Varal da Conscientização</h2>
+    <p class="muted" style="margin-bottom:10px">Mensagens escritas pelos alunos no fim do jogo. Use 🙈 para ocultar alguma mensagem imprópria.</p>
+    <div class="varal" id="varal"></div>
+    <h2>🏆 Ranking geral</h2>
+    <table><thead><tr><th>#</th><th>Apelido</th><th>Pontos</th><th>Estrelas</th><th>Tempo</th><th>Final</th><th></th></tr></thead><tbody id="rank"></tbody></table>
+  </main>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+let senha='';try{senha=sessionStorage.getItem('painelSenha')||''}catch(e){}
+const FINAL={livre:['🌅 Liberdade total','#4ade80'],cicatriz:['🩹 Livre com cicatriz','#f5c518'],corrente:['⛓️ A corrente invisível','#c084fc']};
+const PLAT={celular:'📱 Celular',computador:'💻 Computador',tablet:'📲 Tablet',outro:'❓ Outro'};
+function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+async function api(url,opt={}){
+  const r=await fetch(url,{...opt,headers:{'x-painel-senha':senha,'content-type':'application/json',...(opt.headers||{})}});
+  if(r.status===401)throw new Error('Senha incorreta.');
+  if(!r.ok){let m='Erro '+r.status;try{m=(await r.json()).erro||m}catch(e){}throw new Error(m)}
+  return r;
+}
+async function carregar(){
+  const d=await (await api('/api/painel/dados')).json();
+  const R=d.resumo;
+  const cards=$('#cards');cards.innerHTML='';
+  [[R.online_agora,'jogando agora (últimos 2 min)',true],[R.dispositivos_hoje,'dispositivos hoje'],[R.dispositivos,'dispositivos no total'],[R.partidas,'partidas terminadas'],[R.mensagens,'mensagens no Varal']]
+    .forEach(([n,t,on])=>{const c=el('div','card'+(on?' on':''));c.append(el('b',null,String(n)),el('small',null,t));cards.append(c)});
+  const pl=Object.entries(R.por_plataforma).map(([k,v])=>(PLAT[k]||k)+': '+v).join(' · ');
+  if(pl){const c=el('div','card');c.append(el('small',null,pl));cards.append(c)}
+  const fin=$('#finais');fin.innerHTML='';const tot=Math.max(1,R.partidas);
+  Object.entries(FINAL).forEach(([k,[nome,cor]])=>{const n=R.finais[k]||0;const b=el('div','bar');b.append(el('span',null,nome));
+    const t=el('div','t'),i=el('i');i.style.width=(n/tot*100)+'%';i.style.background=cor;t.append(i);b.append(t,el('b',null,String(n)));fin.append(b)});
+  const v=$('#varal');v.innerHTML='';
+  if(!d.varal.length)v.append(el('div','empty','Nenhuma mensagem ainda.'));
+  d.varal.forEach(m=>{const p=el('div','post'+(m.oculta?' oculta':''),m.mensagem);
+    p.append(el('small',null,m.apelido+' · '+new Date(m.criado_em*1000).toLocaleString('pt-BR')));
+    const b=el('button','btn small',m.oculta?'👁️':'🙈');b.title=m.oculta?'Mostrar':'Ocultar';
+    b.onclick=async()=>{await api('/api/painel/ocultar',{method:'POST',body:JSON.stringify({id:m.id,oculta:!m.oculta})});carregar()};
+    p.append(b);v.append(p)});
+  const tb=$('#rank');tb.innerHTML='';
+  if(!d.ranking.length){const tr=el('tr'),td=el('td','empty','Ninguém terminou o jogo ainda.');td.colSpan=7;tr.append(td);tb.append(tr)}
+  d.ranking.forEach((r,i)=>{const tr=el('tr');
+    [String(i+1),r.apelido,String(r.pontos),'⭐'.repeat(r.estrelas),r.tempo,(FINAL[r.final]||[r.final])[0]].forEach(x=>tr.append(el('td',null,x)));
+    const td=el('td'),b=el('button','btn small ghost','🗑️');b.title='Apagar do ranking';
+    b.onclick=async()=>{if(!window.confirm('Apagar a pontuação de '+r.apelido+'?'))return;await api('/api/painel/apagar-pontuacao',{method:'POST',body:JSON.stringify({id:r.id})});carregar()};
+    td.append(b);tr.append(td);tb.append(tr)});
+  $('#atual').textContent='Atualizado às '+new Date().toLocaleTimeString('pt-BR')+' · atualiza sozinho a cada 15 segundos.';
+}
+async function entrar(){
+  try{await carregar();$('#login').classList.add('hidden');$('#app').classList.remove('hidden');try{sessionStorage.setItem('painelSenha',senha)}catch(e){}}
+  catch(e){$('#err').textContent=e.message;$('#login').classList.remove('hidden');$('#app').classList.add('hidden')}
+}
+$('#login').onsubmit=e=>{e.preventDefault();senha=$('#senha').value;entrar()};
+$('#sair').onclick=()=>{senha='';try{sessionStorage.removeItem('painelSenha')}catch(e){};location.reload()};
+document.querySelectorAll('[data-csv]').forEach(b=>b.onclick=async()=>{
+  try{const r=await api('/api/painel/csv/'+b.dataset.csv);const blob=await r.blob();const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download=b.dataset.csv+'.csv';document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
+  catch(e){alert(e.message)}});
+if(senha)entrar();
+setInterval(()=>{if(!$('#app').classList.contains('hidden'))carregar().catch(()=>{})},15000);
+</script>
+</body>
+</html>

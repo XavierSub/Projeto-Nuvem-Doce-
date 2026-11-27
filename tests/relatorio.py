@@ -12,6 +12,7 @@ NOMES = {
     "test_interface": "📱 Interface",
     "test_narracao": "🎙️ Narração da Brisa",
     "test_audio": "🔊 Áudios gravados (site no Render)",
+    "test_servidor": "🗄️ Servidor e banco de dados",
 }
 DESC = {
     "test_caminho_bom_final_liberdade": "Partida só com escolhas boas → final Liberdade total, placar e barra de progresso certos",
@@ -60,6 +61,20 @@ DESC = {
     "test_velocidade_devagar_no_audio": "Velocidade Devagar vale também para os áudios",
     "test_partida_inteira_no_modo_audio": "Partida completa (erros e fases extras) tocando os áudios",
     "test_lista_de_falas_cobre_tudo_que_a_brisa_diz": "Toda fala da Brisa numa partida nova tem áudio na lista (audio/falas.json)",
+    "test_celular_no_claude_toca_audios_gravados": "Celular no claude.ai (sem a voz da Brisa) toca os áudios gravados",
+    "test_serve_jogo_audios_e_painel": "Servidor entrega o jogo, os áudios e o painel",
+    "test_nao_expoe_arquivos_do_servidor": "Arquivos do servidor, banco e código não ficam acessíveis",
+    "test_dispositivo_registra_e_atualiza": "Registra os dispositivos e conta os acessos; rejeita dados inválidos",
+    "test_pontuacao_valida_e_ranking_ordenado": "Salva pontuações e devolve o ranking em ordem",
+    "test_pontuacao_rejeita_dados_ruins_e_limpa_texto": "Rejeita pontuação inválida e limpa textos e números exagerados",
+    "test_corpo_grande_demais": "Recusa envios grandes demais",
+    "test_varal_salva_e_limita": "Salva mensagens do Varal (até 120 caracteres)",
+    "test_limite_de_envios": "Limite de envios por aparelho (contra spam)",
+    "test_painel_exige_senha": "Painel e dados exigem a senha",
+    "test_painel_oculta_e_apaga": "Painel oculta mensagens e apaga pontuações",
+    "test_csv_abre_no_excel_e_protege_formulas": "CSV abre no Excel com acentos e neutraliza fórmulas perigosas",
+    "test_jogo_completo_ligado_ao_servidor": "Partida completa pelo servidor: aparelho, pontuação, Varal e ranking geral",
+    "test_painel_no_navegador": "Painel no navegador: senha, mensagens com código mostradas como texto, CSV",
 }
 
 xml = ET.parse(sys.argv[1] if len(sys.argv) > 1 else "/tmp/junit.xml").getroot()

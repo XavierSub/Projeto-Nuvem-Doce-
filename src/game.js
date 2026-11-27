@@ -635,7 +635,7 @@ function varal(c){
   vt.oninput=upd;
   b.querySelectorAll('.chip').forEach(ch=>ch.onclick=()=>{sfx.tick();vt.value=ch.textContent;upd();readNow([{text:ch.textContent,el:ch}])});
   go.onclick=()=>{
-    VARAL=vt.value.trim().slice(0,120);
+    VARAL=vt.value.trim().slice(0,120);enviarVaral(VARAL);
     vt.setAttribute('readonly','');go.remove();b.querySelectorAll('.chip').forEach(x=>x.remove());
     const vl=$('#vl');vl.innerHTML=`<div class="line"></div><div class="postit"></div>`;vl.querySelector('.postit').textContent=VARAL;
     setTimeout(()=>solved(c.explain),900);
@@ -966,6 +966,56 @@ function phaseEnd(){
 }
 
 
+/* ================= SERVIDOR PRÓPRIO (Render) ================= */
+const SERVER={on:false};
+let DEVICE_ID='';
+function deviceId(){
+  if(DEVICE_ID)return DEVICE_ID;
+  try{DEVICE_ID=localStorage.getItem('fugaDispositivo')||''}catch(e){}
+  if(!/^[A-Za-z0-9_-]{8,64}$/.test(DEVICE_ID)){
+    const a=new Uint8Array(12);try{crypto.getRandomValues(a)}catch(e){for(let i=0;i<12;i++)a[i]=Math.random()*256}
+    DEVICE_ID='d'+[...a].map(x=>x.toString(16).padStart(2,'0')).join('');
+    try{localStorage.setItem('fugaDispositivo',DEVICE_ID)}catch(e){}
+  }
+  return DEVICE_ID;
+}
+function plataforma(){
+  const ua=navigator.userAgent||'';
+  if(/iPad|Tablet/i.test(ua)||(/Android/i.test(ua)&&!/Mobile/i.test(ua)))return 'tablet';
+  if((navigator.userAgentData&&navigator.userAgentData.mobile)||/Mobi|Android|iPhone/i.test(ua))return 'celular';
+  return 'computador';
+}
+async function api(path,body,ms=8000){
+  const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),ms);
+  try{
+    const r=await fetch(path,body?{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body),signal:ctl.signal}:{signal:ctl.signal,cache:'no-store'});
+    const j=await r.json().catch(()=>null);
+    if(!r.ok||!j||!j.ok)throw new Error((j&&j.erro)||('erro '+r.status));
+    return j;
+  }finally{clearTimeout(t)}
+}
+function pingDispositivo(){if(SERVER.on&&document.visibilityState!=='hidden')api('/api/dispositivo',{id:deviceId(),plataforma:plataforma()}).catch(()=>{})}
+function initServer(){
+  if(window.top!==window||!/^https?:$/.test(location.protocol))return;
+  if(document.documentElement.dataset.servidor!=='nuvem-doce')return;   /* só quando o jogo vem do nosso servidor */
+  api('/api/saude',null,5000).then(j=>{
+    if(j.servidor!=='nuvem-doce')return;
+    SERVER.on=true;pingDispositivo();
+    setInterval(pingDispositivo,60000);
+    document.addEventListener('visibilitychange',pingDispositivo);
+  }).catch(()=>{});
+}
+async function loadServerRanking(){
+  try{
+    const j=await api('/api/ranking?limite=20');
+    return (j.ranking||[]).map(r=>{const e=cleanEntry({nick:r.apelido,score:r.pontos,stars:r.estrelas,time:r.tempo,ending:r.final,av:r.avatar});if(e)e.id='s'+r.id;return e}).filter(Boolean);
+  }catch(e){return null}
+}
+function enviarVaral(msg){
+  if(SERVER.on)api('/api/varal',{dispositivo:deviceId(),apelido:CH.name,mensagem:msg}).catch(()=>{});
+  else if(DB){try{DB.collection('varal').add({nick:String(CH.name).slice(0,16),msg:String(msg).slice(0,120),at:Date.now()}).catch(()=>{})}catch(e){}}
+}
+
 /* ================= RANKING ================= */
 const LKEY='fugaNuvemDoceRanking';
 let DB=null,dbTries=0;
@@ -1006,14 +1056,14 @@ function rankingView(container,myId,startTab){
     container.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
     const rk=$('#rk'),note=$('#rknote');
     if(t==='l'){rk.innerHTML=rowsHTML(localList().map(cleanEntry).filter(Boolean).slice(0,20),myId);note.textContent='Partidas jogadas neste celular ou computador.';return}
-    if(!DB){rk.innerHTML=`<div class="empty">O ranking geral não está disponível nesta tela.<br>Ele funciona para quem abre o jogo logado no claude.ai com permissão de participante.<br>Veja o ranking <b>deste aparelho</b> 👆</div>`;note.textContent='';return}
+    if(!DB&&!SERVER.on){rk.innerHTML=`<div class="empty">O ranking geral não está disponível nesta tela.<br>Ele funciona no site do jogo (Render) ou no claude.ai com permissão de participante.<br>Veja o ranking <b>deste aparelho</b> 👆</div>`;note.textContent='';return}
     rk.innerHTML=`<div class="empty">Carregando ranking… ⏳</div>`;note.textContent='';
-    const g=await loadGlobal();
+    const g=SERVER.on?await loadServerRanking():await loadGlobal();
     if(g===null){rk.innerHTML=`<div class="empty">Não deu para carregar o ranking geral agora. Tente de novo em instantes ou veja o ranking deste aparelho.</div>`;return}
     rk.innerHTML=rowsHTML(g,myId);note.textContent='Top 20 de todos os jogadores.';
   };
   container.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{sfx.click();show(b.dataset.t)});
-  show(startTab||(DB?'g':'l'));
+  show(startTab||(DB||SERVER.on?'g':'l'));
 }
 function rankingScreen(){
   renderPlain(`<div class="tag">🏆 Hall da Fuga</div><h1>Ranking</h1><p class="muted">🌅 Livre · 🩹 Livre com cicatriz · ⛓️ Saiu com a corrente</p><div id="rkv"></div><button class="btn ghost" id="back">← Voltar</button>`);
@@ -1153,7 +1203,13 @@ async function final(){
   $('#newc').onclick=()=>{sfx.click();CH={name:'',s:1,h:0,hc:0,u:0,a:0,p:0};creator()};
   const sub=$('#sub');
   let gid=null;
-  if(DB){
+  if(SERVER.on){
+    sub.textContent='Enviando sua pontuação para o ranking geral…';
+    try{
+      const j=await api('/api/pontuacao',{dispositivo:deviceId(),apelido:entry.nick,pontos:entry.score,estrelas:entry.stars,tempo:entry.time,final:entry.ending,avatar:entry.av});
+      gid='s'+j.id;sub.textContent=`✅ Pontuação enviada! Você está em ${j.posicao}º lugar no ranking geral.`;
+    }catch(e){sub.textContent='Não deu para enviar ao ranking geral agora. Sua partida ficou salva neste aparelho.'}
+  }else if(DB){
     sub.textContent='Enviando sua pontuação para o ranking geral…';
     try{
       const doc={nick:entry.nick,score:entry.score,stars:entry.stars,time:entry.time,ending:entry.ending,av:entry.av,at:entry.at};
@@ -1465,6 +1521,6 @@ new MutationObserver(ms=>{const seen=new Set();ms.forEach(m=>m.addedNodes.forEac
 $('#nbrisa').innerHTML=BRISA;
 /* ================= INÍCIO ================= */
 $('#mute').onclick=e=>{muted=!muted;e.currentTarget.textContent=muted?'🔇':'🔊'};
-initDB();initTTS();initAudio();updVoiceUI();
+initDB();initServer();initTTS();initAudio();updVoiceUI();
 drawProg();
 titleScreen();

@@ -25,22 +25,44 @@ Projeto da disciplina **Promoção da Saúde** do Curso de Enfermagem da UniCerr
 
 O tom segue o plano de ação: informação, respeito e acolhimento, sem culpar ninguém. Errar uma pergunta só gera uma explicação.
 
-## Publicar no Render (site estático)
+## Publicar no Render (servidor com banco de dados)
+
+O jogo roda num **servidor pequeno** (`app.py`, Python + SQLite) que entrega o jogo e os áudios e guarda num mini banco de dados:
+
+- **dispositivos** que abriram o jogo (identificador anônimo, tipo de aparelho, acessos);
+- **ranking geral** de todos os jogadores;
+- **mensagens do Varal da Conscientização**.
+
+Passo a passo:
 
 1. Entre em [render.com](https://render.com) e clique em **New → Blueprint**.
-2. Escolha este repositório (`XavierSub/Projeto-Nuvem-Doce-`). O Render lê o `render.yaml` e cria o site sozinho.
-3. Clique em **Apply**. Em cerca de 1 minuto o jogo fica no ar num endereço `https://fuga-nuvem-doce.onrender.com` (ou parecido).
+2. Escolha este repositório. O Render lê o `render.yaml` e cria o serviço `fuga-nuvem-doce`.
+3. Ele vai pedir o valor de **PAINEL_SENHA**: crie uma senha para o painel do professor.
+4. Clique em **Apply** e espere alguns minutos.
 
-Outra opção é ir em **New → Static Site**, escolher o repositório, deixar o *Build Command* vazio e usar `./` como *Publish Directory*.
+Se você já tinha criado um *Static Site* antes, pode apagá-lo: agora o jogo é um *Web Service*.
 
-> Site estático no Render não "dorme": abre na hora, sem a espera dos serviços gratuitos.
+### Painel do professor
+
+Abra `https://SEU-SITE.onrender.com/painel` e digite a senha. O painel mostra:
+
+- quantos aparelhos estão jogando agora, quantos jogaram hoje e no total (celular, computador ou tablet);
+- quantas partidas terminaram em cada final;
+- as mensagens do Varal (com botão 🙈 para ocultar alguma mensagem imprópria);
+- o ranking geral (com 🗑️ para apagar uma pontuação);
+- botões para **baixar em CSV** (abre no Excel) o Varal, o ranking e os acessos, úteis para a avaliação do plano de ação.
+
+### Atenção ao plano gratuito do Render
+
+- O servidor **"dorme"** depois de 15 minutos sem uso. O primeiro acesso depois disso demora cerca de 1 minuto. Abra o site uns minutos antes da atividade.
+- No plano gratuito, **o banco é apagado quando o servidor reinicia ou é atualizado**. Logo depois da atividade, **baixe os CSVs** no painel. Para guardar os dados para sempre, adicione um *Disk* pago no Render e configure `DB_PATH=/var/data/nuvem_doce.db`.
 
 ## Diferenças entre o Render e o claude.ai
 
 | Recurso | Render (site próprio) | Página no claude.ai |
 |---|---|---|
 | Voz da narração | Áudios gravados com voz neural (pasta `audio/`, em qualquer celular ou computador) | Voz natural da Brisa (Chrome/Edge do computador) |
-| Ranking | Só do aparelho | Do aparelho + geral compartilhado |
+| Ranking | Do aparelho + geral (banco do servidor) | Do aparelho + geral compartilhado |
 | Certificado | Baixar PNG e imprimir | Baixar PNG |
 | Login | Não precisa | Precisa estar logado no claude.ai |
 
@@ -66,7 +88,7 @@ Enquanto os áudios não forem gerados, a narração no Render aparece só em le
 
 ## Testes automatizados
 
-São 50 testes que jogam sozinhos num Chrome automático: fluxo do jogo (todos os finais, fases extras, talentos, erros, ranking, certificado, segurança), interface (5 tamanhos de tela), narração (o que a Brisa lê, a voz fixa e a parada ao avançar) e áudios gravados (ordem, parada, velocidade e se toda fala tem áudio). Veja o resultado em [`tests/RELATORIO.md`](tests/RELATORIO.md).
+São 64 testes que jogam sozinhos num Chrome automático: fluxo do jogo (todos os finais, fases extras, talentos, erros, ranking, certificado, segurança), interface (5 tamanhos de tela), narração (o que a Brisa lê, a voz fixa e a parada ao avançar) áudios gravados (ordem, parada, velocidade e se toda fala tem áudio) e servidor (banco, segurança, limites, painel e CSV). Veja o resultado em [`tests/RELATORIO.md`](tests/RELATORIO.md).
 
 ```bash
 pip install pytest playwright pillow
@@ -74,6 +96,15 @@ python3 -m playwright install chromium
 python3 -m pytest tests -v --junitxml=/tmp/junit.xml
 python3 tests/relatorio.py /tmp/junit.xml
 ```
+
+## Rodar no seu computador
+
+```bash
+pip install -r requirements.txt
+PAINEL_SENHA=teste uvicorn app:app --reload
+```
+
+Abra `http://localhost:8000` (jogo) e `http://localhost:8000/painel` (painel).
 
 ## Editar o jogo
 

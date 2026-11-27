@@ -241,8 +241,11 @@ def test_ranking_geral_no_claude(make_game):
     g.play()
     g.p.wait_for_function("document.querySelector('#sub').innerText.includes('enviada')")
     adds = g.p.evaluate("window.__dbAdds")
-    assert len(adds) == 1 and adds[0]["path"] == "scores"
-    doc = adds[0]["doc"]
+    scores = [a for a in adds if a["path"] == "scores"]
+    varal = [a for a in adds if a["path"] == "varal"]
+    assert len(scores) == 1, "uma pontuação enviada"
+    assert len(varal) == 1 and varal[0]["doc"]["msg"] == "Meu não é minha escolha", "mensagem do Varal salva no banco"
+    doc = scores[0]["doc"]
     assert set(doc) == {"nick", "score", "stars", "time", "ending", "av", "at"}
     names = g.p.eval_on_selector_all("#rk .who b", "els=>els.map(e=>e.innerText)")
     assert "<b>Zé</b>" in names, "nome do banco deve aparecer como texto"
