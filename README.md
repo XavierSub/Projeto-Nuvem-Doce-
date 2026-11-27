@@ -48,7 +48,9 @@ Outra opção é ir em **New → Static Site**, escolher o repositório, deixar 
 
 A voz da Brisa do claude.ai não pode ser exportada, então o site no Render toca **arquivos .mp3** gerados com uma voz neural em português. A lista com todas as falas do jogo (467) já está em `audio/falas.json`.
 
-Para gerar os áudios, rode **no seu computador** (precisa de internet, leva alguns minutos):
+**Jeito automático (recomendado):** o GitHub gera os áudios sozinho. Quando a lista de falas muda, o robô da aba **Actions** do repositório roda, cria os .mp3 e salva na pasta `audio/`, e o Render publica de novo. Para trocar a voz ou a velocidade, vá em **Actions → Gerar áudios da Brisa → Run workflow**.
+
+**Jeito manual:** rode no seu computador (precisa de internet, leva alguns minutos):
 
 ```bash
 pip install edge-tts

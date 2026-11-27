@@ -39,11 +39,23 @@ async def gerar(voz, velocidade, testar):
             manifest = json.loads(manifest_path.read_text(encoding="utf-8")) or {}
         except json.JSONDecodeError:
             manifest = {}
+    # Se a voz ou a velocidade mudaram, gera tudo de novo com a voz nova
+    cfg_path = PASTA / "voz.json"
+    cfg = {"voz": voz, "velocidade": velocidade}
+    refazer = False
+    if not testar:
+        try:
+            refazer = json.loads(cfg_path.read_text(encoding="utf-8")) != cfg
+        except (FileNotFoundError, json.JSONDecodeError):
+            refazer = any(PASTA.glob("f*.mp3"))
+        if refazer:
+            print("Voz ou velocidade nova: gerando todos os áudios de novo.")
+            manifest = {}
     feitas = 0
     for i, f in enumerate(falas, 1):
         arquivo = f"{f['id']}.mp3"
         destino = PASTA / arquivo
-        if not (destino.exists() and destino.stat().st_size > 0):
+        if refazer or not (destino.exists() and destino.stat().st_size > 0):
             for tentativa in range(3):
                 try:
                     await edge_tts.Communicate(f["texto"], voz, rate=velocidade).save(str(destino))
@@ -60,6 +72,8 @@ async def gerar(voz, velocidade, testar):
             manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=0), encoding="utf-8")
             print(f"{i}/{len(falas)} falas prontas")
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=0), encoding="utf-8")
+    if not testar:
+        cfg_path.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
     print(f"✅ {feitas} áudios novos · {len(manifest)} no total · voz {voz}")
     if testar:
         print("Ouça os arquivos f0001.mp3, f0002.mp3 e f0003.mp3 na pasta audio/. Se gostar, rode sem --testar.")
@@ -71,4 +85,6 @@ if __name__ == "__main__":
     ap.add_argument("--velocidade", default="-5%")
     ap.add_argument("--testar", action="store_true")
     a = ap.parse_args()
+    if not a.velocidade.startswith(("+", "-")):
+        a.velocidade = "+" + a.velocidade
     asyncio.run(gerar(a.voz, a.velocidade, a.testar))
