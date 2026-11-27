@@ -1,0 +1,1870 @@
+[
+ {
+  "id": "f0001",
+  "texto": "Crie seu detento, atravesse 5 fases e cuidado com as escolhas: as ruins abrem fases extras de consequência."
+ },
+ {
+  "id": "f0002",
+  "texto": "Oiê! Eu sou a Brisa, o espírito do ar limpo. Vou ler tudinho pra você durante o jogo, tá bom? Agora, monta o seu personagem do seu jeito. Quando terminar, é só tocar em confirmar ficha."
+ },
+ {
+  "id": "f0003",
+  "texto": "Ei, acorda!"
+ },
+ {
+  "id": "f0004",
+  "texto": "Você acorda numa cela fria. O ar tem cheiro de melancia gelada, e no colchão há um pod piscando. Na outra cama, um colega de cela te observa. O alto-falante chia: Bem-vindo à Nuvem Doce. Aqui quem manda é o carcereiro Nico. Ninguém entra achando que vai ficar… mas fica."
+ },
+ {
+  "id": "f0005",
+  "texto": "Você não é culpado de nada: essa prisão foi projetada para prender. Atravesse as 5 fases (cela, cofre, raio-X, pátio e portão) e saia antes do amanhecer. Escolhas ruins abrem fases extras."
+ },
+ {
+  "id": "f0006",
+  "texto": "Fôlego: sua saúde respiratória. Dependência: quanto o Nico te prende. Escolhas: mudam a história e o final. Pontos: vão para o ranking."
+ },
+ {
+  "id": "f0007",
+  "texto": "Erro em pergunta é aprendizado (só toca o alarme). Escolha ruim tem consequência."
+ },
+ {
+  "id": "f0008",
+  "texto": "Bora lá! Fase um… a cela."
+ },
+ {
+  "id": "f0009",
+  "texto": "O laudo escondido"
+ },
+ {
+  "id": "f0010",
+  "texto": "Embaixo do colchão você acha um laudo confiscado sobre o pod. O resultado está borrado."
+ },
+ {
+  "id": "f0011",
+  "texto": "O que é, de verdade, a fumacinha do pod?"
+ },
+ {
+  "id": "f0012",
+  "texto": "Escolha uma opção:"
+ },
+ {
+  "id": "f0013",
+  "texto": "Opção A: Vapor de água com aroma. Some no ar e não deixa nada no pulmão."
+ },
+ {
+  "id": "f0014",
+  "texto": "Opção B: Um aerossol aquecido: gotículas e partículas finas carregando substâncias até o fundo do pulmão."
+ },
+ {
+  "id": "f0015",
+  "texto": "Opção C: Fumaça de fruta. Como é sabor, é natural."
+ },
+ {
+  "id": "f0016",
+  "texto": "Opção D: Ar com cheiro. Não tem nada dentro, por isso é leve."
+ },
+ {
+  "id": "f0017",
+  "texto": "Opa! Presta atenção nessa pista."
+ },
+ {
+  "id": "f0018",
+  "texto": "Alarme! Essa não abre."
+ },
+ {
+  "id": "f0019",
+  "texto": "Esse é o mito favorito do carcereiro. O que sai do pod não é vapor de água: é um aerossol, ou seja, gotículas e partículas muito finas que chegam ao fundo do pulmão."
+ },
+ {
+  "id": "f0020",
+  "texto": "Use a pista e tente outra"
+ },
+ {
+  "id": "f0021",
+  "texto": "Quase! Escuta a dica comigo."
+ },
+ {
+  "id": "f0022",
+  "texto": "O sabor vem de aromatizantes químicos, não da fruta. E nada ali é natural: o líquido é aquecido por uma resistência de metal antes de virar névoa."
+ },
+ {
+  "id": "f0023",
+  "texto": "Leve é sensação, não composição. A névoa é visível justamente porque tem coisa dentro: gotículas e partículas suspensas."
+ },
+ {
+  "id": "f0024",
+  "texto": "Arrasou!"
+ },
+ {
+  "id": "f0025",
+  "texto": "Primeiro cadeado aberto!"
+ },
+ {
+  "id": "f0026",
+  "texto": "Não é vapor d'água. É aerossol, uma névoa de gotículas e partículas tão finas que entram fundo nos pulmões."
+ },
+ {
+  "id": "f0027",
+  "texto": "O colega de cela"
+ },
+ {
+  "id": "f0028",
+  "texto": "Rato fala: Ei, novato… dá um trago aqui. Ajuda a pensar nesses enigmas. Todo mundo aqui usa."
+ },
+ {
+  "id": "f0029",
+  "texto": "O que você faz?"
+ },
+ {
+  "id": "f0030",
+  "texto": "Opção 1: Dar só um trago pra testar"
+ },
+ {
+  "id": "f0031",
+  "texto": "Opção 2: Valeu, tô de boa. Preciso da cabeça limpa."
+ },
+ {
+  "id": "f0032",
+  "texto": "Opção 3: Por que você usa, Rato?"
+ },
+ {
+  "id": "f0033",
+  "texto": "Hmm… essa escolha vai trazer consequência."
+ },
+ {
+  "id": "f0034",
+  "texto": "Primeira dose"
+ },
+ {
+  "id": "f0035",
+  "texto": "Bate uma tontura e um barato que some em minutos. O Rato sorri: Viu? Agora você é da casa. Só que o cheiro ficou no ar… e alguém sentiu."
+ },
+ {
+  "id": "f0036",
+  "texto": "Essa escolha vai abrir uma fase extra."
+ },
+ {
+  "id": "f0037",
+  "texto": "Mito ou verdade?"
+ },
+ {
+  "id": "f0038",
+  "texto": "Os detentos antigos espalham histórias pela cela. Vire as cartas: é mito ou verdade?"
+ },
+ {
+  "id": "f0039",
+  "texto": "Um detento antigo diz: Se o pod diz zero nicotina, não faz mal nenhum. É mito ou verdade?"
+ },
+ {
+  "id": "f0040",
+  "texto": "Quase! É mito."
+ },
+ {
+  "id": "f0041",
+  "texto": "Mesmo sem nicotina, você inala solventes aquecidos, aromatizantes e partículas finas que irritam as vias aéreas. E análises já acharam nicotina em produtos vendidos como zero."
+ },
+ {
+  "id": "f0042",
+  "texto": "Um detento antigo diz: O aerossol pode ter metais como níquel e chumbo. É mito ou verdade?"
+ },
+ {
+  "id": "f0043",
+  "texto": "Quase! É verdade."
+ },
+ {
+  "id": "f0044",
+  "texto": "Os metais saem da resistência que aquece o líquido e vão junto com a névoa para dentro do pulmão."
+ },
+ {
+  "id": "f0045",
+  "texto": "Um detento antigo diz: Se quase não tem cheiro, é porque não tem nada tóxico. É mito ou verdade?"
+ },
+ {
+  "id": "f0046",
+  "texto": "Cheiro não mede perigo. Partículas ultrafinas e várias substâncias irritantes não têm cheiro perceptível."
+ },
+ {
+  "id": "f0047",
+  "texto": "Isso aí! Mais um cadeado aberto!"
+ },
+ {
+  "id": "f0048",
+  "texto": "Cadeado aberto! Você acertou 0 de 3."
+ },
+ {
+  "id": "f0049",
+  "texto": "Os detentos espalham muito mito. Quem conhece os fatos não cai na conversa."
+ },
+ {
+  "id": "f0050",
+  "texto": "Scanner da névoa"
+ },
+ {
+  "id": "f0051",
+  "texto": "Na grade há um scanner. Ele só abre se você marcar tudo o que tem no aerossol e nada que não tem."
+ },
+ {
+  "id": "f0052",
+  "texto": "Toque em tudo o que o scanner encontrou na névoa:"
+ },
+ {
+  "id": "f0053",
+  "texto": "Nicotina"
+ },
+ {
+  "id": "f0054",
+  "texto": "Só água pura"
+ },
+ {
+  "id": "f0055",
+  "texto": "Propilenoglicol e glicerina"
+ },
+ {
+  "id": "f0056",
+  "texto": "Vitaminas"
+ },
+ {
+  "id": "f0057",
+  "texto": "Formaldeído e acroleína"
+ },
+ {
+  "id": "f0058",
+  "texto": "Oxigênio extra"
+ },
+ {
+  "id": "f0059",
+  "texto": "Metais (níquel, chumbo)"
+ },
+ {
+  "id": "f0060",
+  "texto": "Partículas ultrafinas"
+ },
+ {
+  "id": "f0061",
+  "texto": "Só água pura, marcado"
+ },
+ {
+  "id": "f0062",
+  "texto": "Tudo bem errar, viu? Escuta a dica e tenta de novo."
+ },
+ {
+  "id": "f0063",
+  "texto": "O scanner apitou!"
+ },
+ {
+  "id": "f0064",
+  "texto": "Os itens em vermelho não fazem parte do aerossol."
+ },
+ {
+  "id": "f0065",
+  "texto": "E ainda falta coisa que está no aerossol. Procure de novo!"
+ },
+ {
+  "id": "f0066",
+  "texto": "Scanner liberado!"
+ },
+ {
+  "id": "f0067",
+  "texto": "Nicotina: a corrente que prende."
+ },
+ {
+  "id": "f0068",
+  "texto": "Propilenoglicol e glicerina: formam a fumaça."
+ },
+ {
+  "id": "f0069",
+  "texto": "Formaldeído e acroleína: surgem quando o líquido e os aromatizantes são aquecidos."
+ },
+ {
+  "id": "f0070",
+  "texto": "Metais e partículas ultrafinas: vêm da resistência e entram fundo no pulmão."
+ },
+ {
+  "id": "f0071",
+  "texto": "Clank! Mais uma fase vencida!"
+ },
+ {
+  "id": "f0072",
+  "texto": "clank! A cela abriu!"
+ },
+ {
+  "id": "f0073",
+  "texto": "Resumo da Fase 1: vape não é vapor. É um aerossol com nicotina, solventes aquecidos, compostos irritantes e metais."
+ },
+ {
+  "id": "f0074",
+  "texto": "Você já ouviu alguém dizer que vape é só vapor?"
+ },
+ {
+  "id": "f0075",
+  "texto": "Já, várias vezes"
+ },
+ {
+  "id": "f0076",
+  "texto": "Uma ou outra vez"
+ },
+ {
+  "id": "f0077",
+  "texto": "Nunca"
+ },
+ {
+  "id": "f0078",
+  "texto": "Uma escolha sua abriu uma fase extra antes da próxima fase."
+ },
+ {
+  "id": "f0079",
+  "texto": "Ih, deu ruim! O guarda sentiu o cheiro do vape. Corre!"
+ },
+ {
+  "id": "f0080",
+  "texto": "Corra pelo corredor!"
+ },
+ {
+  "id": "f0081",
+  "texto": "O cheiro adocicado do aerossol ficou no ar da cela, e o guarda sentiu. Alarme! Você corre pelo corredor. Em cada bifurcação, a porta certa depende de você saber a verdade."
+ },
+ {
+  "id": "f0082",
+  "texto": "bifurcação 1 DE 3 escolha A porta certa O cheiro do vape some rápido e não deixa nada no ar."
+ },
+ {
+  "id": "f0083",
+  "texto": "Porta mito"
+ },
+ {
+  "id": "f0084",
+  "texto": "Porta verdade"
+ },
+ {
+  "id": "f0085",
+  "texto": "Porta errada: beco sem saída e tosse…"
+ },
+ {
+  "id": "f0086",
+  "texto": "É mito. O aerossol espalha partículas no ambiente, e quem está por perto também acaba inalando."
+ },
+ {
+  "id": "f0087",
+  "texto": "bifurcação 2 DE 3 escolha A porta certa Um trago só não muda nada no cérebro."
+ },
+ {
+  "id": "f0088",
+  "texto": "Porta certa! Você ganhou distância."
+ },
+ {
+  "id": "f0089",
+  "texto": "É mito. A nicotina chega ao cérebro em segundos, e as primeiras doses já começam a ensinar o cérebro a querer mais."
+ },
+ {
+  "id": "f0090",
+  "texto": "bifurcação 3 DE 3 escolha A porta certa Quem fica perto de alguém usando vape também é exposto às substâncias."
+ },
+ {
+  "id": "f0091",
+  "texto": "É verdade. Isso se chama exposição passiva: as partículas e a nicotina do aerossol ficam no ar."
+ },
+ {
+  "id": "f0092",
+  "texto": "Despistou o guarda!"
+ },
+ {
+  "id": "f0093",
+  "texto": "Você despistou o guarda! Mas repare: essa corrida só aconteceu por causa daquele trago. Uma escolha pequena puxou um problema grande."
+ },
+ {
+  "id": "f0094",
+  "texto": "Fase dois! O cofre do diretor."
+ },
+ {
+  "id": "f0095",
+  "texto": "O disco do cofre"
+ },
+ {
+  "id": "f0096",
+  "texto": "A chave do portão está no cofre do diretor. No disco, um recado riscado: o cérebro termina a obra aos…"
+ },
+ {
+  "id": "f0097",
+  "texto": "Gire até a idade em que o cérebro termina de amadurecer, mais ou menos."
+ },
+ {
+  "id": "f0098",
+  "texto": "15"
+ },
+ {
+  "id": "f0099",
+  "texto": "Perfeito!"
+ },
+ {
+  "id": "f0100",
+  "texto": "25! Primeiro cadeado aberto."
+ },
+ {
+  "id": "f0101",
+  "texto": "O cérebro só termina de amadurecer por volta dos 25 anos. Enquanto está em obra, ele aprende rápido… inclusive a depender de nicotina."
+ },
+ {
+  "id": "f0102",
+  "texto": "A proposta do Diretor"
+ },
+ {
+  "id": "f0103",
+  "texto": "Diretor da Nuvem Doce fala: Esperto você, hein? Vamos fazer um acordo: eu abro o próximo cadeado pra você… se você experimentar o nosso pod novo, sabor menta ice. É por conta da casa."
+ },
+ {
+  "id": "f0104",
+  "texto": "O que você responde?"
+ },
+ {
+  "id": "f0105",
+  "texto": "Opção 1: Aceitar o atalho"
+ },
+ {
+  "id": "f0106",
+  "texto": "Opção 2: Não preciso do seu atalho."
+ },
+ {
+  "id": "f0107",
+  "texto": "Opção 3: Por que você quer tanto que eu use?"
+ },
+ {
+  "id": "f0108",
+  "texto": "Eita… o Nico gostou dessa."
+ },
+ {
+  "id": "f0109",
+  "texto": "Cliente fiel"
+ },
+ {
+  "id": "f0110",
+  "texto": "O cadeado abre sozinho… mas o pod novo tinha nicotina alta. Sua cabeça gira e o estômago embrulha. O Diretor anota no caderno: cliente fiel. Atalho oferecido por quem lucra com você sempre cobra depois."
+ },
+ {
+  "id": "f0111",
+  "texto": "A armadilha do Nico"
+ },
+ {
+  "id": "f0112",
+  "texto": "O cadeado já está aberto: o Diretor destrancou com o atalho. Mas você não aprendeu como o Nico prende os detentos… e ele já está te prendendo."
+ },
+ {
+  "id": "f0113",
+  "texto": "Aberto pelo atalho (0 pontos)"
+ },
+ {
+  "id": "f0114",
+  "texto": "Para registro, a armadilha do Nico é: nicotina chega ao cérebro → pico de dopamina → queda e vontade de usar de novo → o cérebro se adapta e pede mais."
+ },
+ {
+  "id": "f0115",
+  "texto": "O papo do detento"
+ },
+ {
+  "id": "f0116",
+  "texto": "Detento da cela 12 fala: Cara, o vape me acalma. Quando fico ansioso, dou um trago e passa."
+ },
+ {
+  "id": "f0117",
+  "texto": "O que está acontecendo de verdade?"
+ },
+ {
+  "id": "f0118",
+  "texto": "Opção A: É verdade: nicotina é um tipo de remédio para ansiedade."
+ },
+ {
+  "id": "f0119",
+  "texto": "Opção B: A calma é, em boa parte, o alívio da abstinência que a própria nicotina criou. Com o tempo, a ansiedade pode piorar."
+ },
+ {
+  "id": "f0120",
+  "texto": "Opção C: Só acalma quem já tem ansiedade. Para os outros, não faz efeito."
+ },
+ {
+  "id": "f0121",
+  "texto": "Opção D: A nicotina não mexe com o humor, então é só efeito placebo."
+ },
+ {
+  "id": "f0122",
+  "texto": "Nicotina não trata ansiedade. Estudos associam o uso em jovens a mais sintomas de ansiedade e depressão, não menos."
+ },
+ {
+  "id": "f0123",
+  "texto": "A nicotina age no cérebro de qualquer pessoa. O alívio aparece em quem já está dependente: é o fim da falta que ela mesma causou."
+ },
+ {
+  "id": "f0124",
+  "texto": "Mexe, sim! A nicotina mexe com dopamina e outros neurotransmissores ligados a humor, atenção e estresse. Por isso vicia."
+ },
+ {
+  "id": "f0125",
+  "texto": "Cofre destravado!"
+ },
+ {
+  "id": "f0126",
+  "texto": "Esse é o golpe do Nico: ele causa a ansiedade da abstinência e depois vende o alívio. No cérebro adolescente isso pesa mais e pode afetar atenção, memória, controle de impulsos e humor."
+ },
+ {
+  "id": "f0127",
+  "texto": "click! A chave é sua!"
+ },
+ {
+  "id": "f0128",
+  "texto": "Resumo da Fase 2: a nicotina usa a dopamina para viciar rápido, e o cérebro adolescente, que vai estar em obra até ~25 anos, é o alvo mais fácil."
+ },
+ {
+  "id": "f0129",
+  "texto": "Quando bate ansiedade ou tédio, o que te ajuda de verdade?"
+ },
+ {
+  "id": "f0130",
+  "texto": "Música"
+ },
+ {
+  "id": "f0131",
+  "texto": "Me mexer"
+ },
+ {
+  "id": "f0132",
+  "texto": "Conversar"
+ },
+ {
+  "id": "f0133",
+  "texto": "Jogar"
+ },
+ {
+  "id": "f0134",
+  "texto": "Descansar"
+ },
+ {
+  "id": "f0135",
+  "texto": "Opa… você passou mal. Vamos pra enfermaria."
+ },
+ {
+  "id": "f0136",
+  "texto": "Mal-estar na enfermaria"
+ },
+ {
+  "id": "f0137",
+  "texto": "Enfermeira Clara fala: O pod do Diretor tinha nicotina alta, e seu corpo não aguentou. Calma, você está sendo cuidado. Me ajuda: quais desses sinais você está sentindo?"
+ },
+ {
+  "id": "f0138",
+  "texto": "Marque os sinais de excesso de nicotina:"
+ },
+ {
+  "id": "f0139",
+  "texto": "Náusea ou vômito"
+ },
+ {
+  "id": "f0140",
+  "texto": "Tontura"
+ },
+ {
+  "id": "f0141",
+  "texto": "Coração acelerado"
+ },
+ {
+  "id": "f0142",
+  "texto": "Suor frio"
+ },
+ {
+  "id": "f0143",
+  "texto": "Sono tranquilo e relaxado"
+ },
+ {
+  "id": "f0144",
+  "texto": "Mais força nos músculos"
+ },
+ {
+  "id": "f0145",
+  "texto": "Sono tranquilo e relaxado, marcado"
+ },
+ {
+  "id": "f0146",
+  "texto": "Ainda não."
+ },
+ {
+  "id": "f0147",
+  "texto": "Os itens em vermelho não estão certos."
+ },
+ {
+  "id": "f0148",
+  "texto": "Ainda falta marcar alguma coisa. Olhe de novo!"
+ },
+ {
+  "id": "f0149",
+  "texto": "Você foi atendido"
+ },
+ {
+  "id": "f0150",
+  "texto": "Náusea, tontura, coração acelerado e suor frio podem ser sinais de excesso de nicotina. Os pods variam muito na concentração, e o usuário nunca sabe direito quanto está inalando. O líquido de refil também é perigoso se for engolido, principalmente por crianças."
+ },
+ {
+  "id": "f0151",
+  "texto": "Agora, fase três: a sala de raio-x."
+ },
+ {
+  "id": "f0152",
+  "texto": "Mapa do corpo"
+ },
+ {
+  "id": "f0153",
+  "texto": "A porta da sala de Raio-X só abre quando o painel do corpo estiver completo. Ligue cada órgão ao que o vape pode causar nele."
+ },
+ {
+  "id": "f0154",
+  "texto": "Pulmões"
+ },
+ {
+  "id": "f0155",
+  "texto": "Coração"
+ },
+ {
+  "id": "f0156",
+  "texto": "Cérebro"
+ },
+ {
+  "id": "f0157",
+  "texto": "Boca e gengivas"
+ },
+ {
+  "id": "f0158",
+  "texto": "Toque num órgão e depois no efeito que combina com ele."
+ },
+ {
+  "id": "f0159",
+  "texto": "Dependência, alterações de humor e prejuízo à atenção e à memória"
+ },
+ {
+  "id": "f0160",
+  "texto": "Irritação, tosse, chiado e risco de lesão pulmonar (EVALI)"
+ },
+ {
+  "id": "f0161",
+  "texto": "Boca seca, irritação e inflamação da gengiva"
+ },
+ {
+  "id": "f0162",
+  "texto": "Aumento da frequência cardíaca e da pressão arterial"
+ },
+ {
+  "id": "f0163",
+  "texto": "Não combina!"
+ },
+ {
+  "id": "f0164",
+  "texto": "Pense em onde o aerossol entra primeiro e pousa."
+ },
+ {
+  "id": "f0165",
+  "texto": "A nicotina é estimulante: ela acelera alguma coisa que bate."
+ },
+ {
+  "id": "f0166",
+  "texto": "Painel completo!"
+ },
+ {
+  "id": "f0167",
+  "texto": "O vape não afeta só o pulmão. A nicotina mexe com o coração e o cérebro, e o aerossol irrita tudo por onde passa, da boca até o fundo dos pulmões."
+ },
+ {
+  "id": "f0168",
+  "texto": "A consulta"
+ },
+ {
+  "id": "f0169",
+  "texto": "Enfermeiro Davi fala: Antes do exame, preciso perguntar, sem julgamento: você já usou vape? Isso muda como eu cuido de você."
+ },
+ {
+  "id": "f0170",
+  "texto": "Opção 1: Nunca usei. (mesmo tendo usado)"
+ },
+ {
+  "id": "f0171",
+  "texto": "Opção 2: Contar a verdade, seja ela qual for"
+ },
+ {
+  "id": "f0172",
+  "texto": "Opção 3: Isso não é da sua conta."
+ },
+ {
+  "id": "f0173",
+  "texto": "Informação escondida"
+ },
+ {
+  "id": "f0174",
+  "texto": "O Davi anota não usa e segue. Sem saber a verdade, ele não consegue te orientar nem te ajudar a parar. Profissionais de saúde não estão ali para julgar: o que você conta ajuda no seu cuidado."
+ },
+ {
+  "id": "f0175",
+  "texto": "Prontuário de alerta"
+ },
+ {
+  "id": "f0176",
+  "texto": "O cadeado é um prontuário. Marque os sinais que pedem procurar um serviço de saúde em quem usa vape."
+ },
+ {
+  "id": "f0177",
+  "texto": "Quais sinais são de alerta?"
+ },
+ {
+  "id": "f0178",
+  "texto": "Falta de ar"
+ },
+ {
+  "id": "f0179",
+  "texto": "Um espirro isolado"
+ },
+ {
+  "id": "f0180",
+  "texto": "Dor no peito"
+ },
+ {
+  "id": "f0181",
+  "texto": "Uma leve preguiça de manhã"
+ },
+ {
+  "id": "f0182",
+  "texto": "Tosse que não passa"
+ },
+ {
+  "id": "f0183",
+  "texto": "Chiado ao respirar"
+ },
+ {
+  "id": "f0184",
+  "texto": "Um espirro isolado, marcado"
+ },
+ {
+  "id": "f0185",
+  "texto": "Boa! Você tá voando!"
+ },
+ {
+  "id": "f0186",
+  "texto": "Prontuário certo!"
+ },
+ {
+  "id": "f0187",
+  "texto": "Falta de ar, dor no peito, tosse persistente e chiado em quem usa vape são motivos para procurar a UBS ou um serviço de saúde, e contar sobre o uso."
+ },
+ {
+  "id": "f0188",
+  "texto": "O raio-X misterioso"
+ },
+ {
+  "id": "f0189",
+  "texto": "Na parede, o raio-X de um jovem de 17 anos que usava vape mostra os pulmões inflamados. O laudo diz: suspeita de EVALI."
+ },
+ {
+  "id": "f0190",
+  "texto": "O que é EVALI?"
+ },
+ {
+  "id": "f0191",
+  "texto": "Opção A: Uma alergia ao sabor de melancia."
+ },
+ {
+  "id": "f0192",
+  "texto": "Opção B: Uma lesão pulmonar associada ao uso de cigarro eletrônico, que pode causar falta de ar, tosse, dor no peito e até internação."
+ },
+ {
+  "id": "f0193",
+  "texto": "Opção C: Uma gripe comum que passa sozinha em dois dias."
+ },
+ {
+  "id": "f0194",
+  "texto": "Opção D: Algo que só acontece com quem fuma cigarro comum."
+ },
+ {
+  "id": "f0195",
+  "texto": "Não é alergia de sabor. É uma lesão no próprio pulmão."
+ },
+ {
+  "id": "f0196",
+  "texto": "Os sintomas podem até parecer de gripe no começo, mas a EVALI é uma lesão pulmonar que pode exigir internação."
+ },
+ {
+  "id": "f0197",
+  "texto": "O E de EVALI vem de e-cigarette, cigarro eletrônico em inglês. Ela está ligada justamente ao vape."
+ },
+ {
+  "id": "f0198",
+  "texto": "Raio-X decifrado!"
+ },
+ {
+  "id": "f0199",
+  "texto": "EVALI é a lesão pulmonar associada ao uso de cigarro eletrônico. Já houve surtos com muitos jovens internados, alguns em estado grave. Por isso é só vapor é um mito perigoso."
+ },
+ {
+  "id": "f0200",
+  "texto": "Grade aberta! Mandou muito bem nessa fase!"
+ },
+ {
+  "id": "f0201",
+  "texto": "clank! Saída do Raio-X liberada!"
+ },
+ {
+  "id": "f0202",
+  "texto": "Resumo da Fase 3: o vape afeta pulmões, coração, cérebro e boca. Sinais como falta de ar e dor no peito pedem atendimento, e falar a verdade com profissionais de saúde ajuda no cuidado."
+ },
+ {
+  "id": "f0203",
+  "texto": "Se você tivesse uma dúvida sobre saúde, com quem falaria primeiro?"
+ },
+ {
+  "id": "f0204",
+  "texto": "Família"
+ },
+ {
+  "id": "f0205",
+  "texto": "Professor(a)"
+ },
+ {
+  "id": "f0206",
+  "texto": "Profissional de saúde"
+ },
+ {
+  "id": "f0207",
+  "texto": "Amigo(a)"
+ },
+ {
+  "id": "f0208",
+  "texto": "Fase quatro, o pátio. Fica esperto, hein?"
+ },
+ {
+  "id": "f0209",
+  "texto": "Caça às iscas"
+ },
+ {
+  "id": "f0210",
+  "texto": "O telão do pátio repete o post que atrai novos detentos. Toque nas 5 iscas escondidas no texto."
+ },
+ {
+  "id": "f0211",
+  "texto": "O post diz: Novo sabor melancia gelo! Todo mundo da galera já tá usando, nem tem cheiro e é tão leve. Hashtag aesthetic, hashtag vibe. Quarenta e oito mil curtidas. Agora toque nas cinco iscas escondidas no texto."
+ },
+ {
+  "id": "f0212",
+  "texto": "Postado há 2 h é só parte do app, não é isca. Continue procurando!"
+ },
+ {
+  "id": "f0213",
+  "texto": "Iscas desarmadas!"
+ },
+ {
+  "id": "f0214",
+  "texto": "E a maior isca é o que não está no post: nada sobre nicotina ou dependência. Pergunta-chave: quem ganha se eu acreditar nisso?"
+ },
+ {
+  "id": "f0215",
+  "texto": "O contrabandista"
+ },
+ {
+  "id": "f0216",
+  "texto": "Detento Fumaça fala: Psiu. Tenho um pod importado, zero nicotina, saudável. Te passo baratinho, só pra relaxar antes da fuga."
+ },
+ {
+  "id": "f0217",
+  "texto": "Opção 1: Comprar. Se é zero nicotina, qual o problema?"
+ },
+ {
+  "id": "f0218",
+  "texto": "Opção 2: Zero nicotina segundo quem? Tem registro?"
+ },
+ {
+  "id": "f0219",
+  "texto": "Opção 3: Passo. Quero sair daqui inteiro."
+ },
+ {
+  "id": "f0220",
+  "texto": "Garganta ardendo"
+ },
+ {
+  "id": "f0221",
+  "texto": "No primeiro trago, a garganta arde e a cabeça gira. Esse zero nicotina não parece nada zero… De onde veio esse pod?"
+ },
+ {
+  "id": "f0222",
+  "texto": "Por que tantos experimentam?"
+ },
+ {
+  "id": "f0223",
+  "texto": "O telão exibe uma pesquisa: Por que adolescentes experimentam vape? Marque os fatores reais de influência."
+ },
+ {
+  "id": "f0224",
+  "texto": "Quais fatores influenciam de verdade?"
+ },
+ {
+  "id": "f0225",
+  "texto": "Curiosidade"
+ },
+ {
+  "id": "f0226",
+  "texto": "Sabores e aparência bonita"
+ },
+ {
+  "id": "f0227",
+  "texto": "Influência e pressão dos amigos"
+ },
+ {
+  "id": "f0228",
+  "texto": "Propaganda e influenciadores"
+ },
+ {
+  "id": "f0229",
+  "texto": "Recomendação de médicos"
+ },
+ {
+  "id": "f0230",
+  "texto": "A ideia de que é inofensivo"
+ },
+ {
+  "id": "f0231",
+  "texto": "Porque melhora o desempenho no esporte"
+ },
+ {
+  "id": "f0232",
+  "texto": "Estresse e ansiedade"
+ },
+ {
+  "id": "f0233",
+  "texto": "Recomendação de médicos, marcado"
+ },
+ {
+  "id": "f0234",
+  "texto": "Mandou bem!"
+ },
+ {
+  "id": "f0235",
+  "texto": "Fatores mapeados!"
+ },
+ {
+  "id": "f0236",
+  "texto": "Curiosidade, sabores, amigos, propaganda, a falsa ideia de que é inofensivo e o estresse estão entre os principais motivos. Saber disso ajuda a perceber quando alguém está tentando te influenciar."
+ },
+ {
+  "id": "f0237",
+  "texto": "Checagem de fake"
+ },
+ {
+  "id": "f0238",
+  "texto": "Nos comentários do post, alguém escreveu:"
+ },
+ {
+  "id": "f0239",
+  "texto": "O Léo comentou: li que vape é noventa e cinco por cento mais seguro que cigarro, então pra gente tá liberado."
+ },
+ {
+  "id": "f0240",
+  "texto": "Como desmontar esse argumento?"
+ },
+ {
+  "id": "f0241",
+  "texto": "Opção A: Se tem número e porcentagem, deve ser verdade."
+ },
+ {
+  "id": "f0242",
+  "texto": "Opção B: Essa comparação é com o cigarro, para adultos que já fumam. Para quem não fuma, menos pior não é seguro: é começar uma dependência do zero."
+ },
+ {
+  "id": "f0243",
+  "texto": "Opção C: Então vape é seguro para qualquer pessoa."
+ },
+ {
+  "id": "f0244",
+  "texto": "Opção D: Só faz mal se usar muito. Pouco não tem problema."
+ },
+ {
+  "id": "f0245",
+  "texto": "Número sem contexto é uma tática clássica de desinformação. Sempre pergunte: comparado com o quê? Para quem? Quem disse?"
+ },
+ {
+  "id": "f0246",
+  "texto": "Menos danoso que cigarro não quer dizer seguro. Pular da janela do 2º andar é menos pior que do 10º, e nem por isso é boa ideia."
+ },
+ {
+  "id": "f0247",
+  "texto": "A dependência de nicotina pode começar com uso ocasional, principalmente no cérebro adolescente. Só um pouco é como o ciclo começa."
+ },
+ {
+  "id": "f0248",
+  "texto": "Fake desmontada!"
+ },
+ {
+  "id": "f0249",
+  "texto": "Desinformação adora meia-verdade fora de contexto. Antes de acreditar, cheque três coisas: quem disse, comparado com o quê e para quem."
+ },
+ {
+  "id": "f0250",
+  "texto": "clank! Telão desligado!"
+ },
+ {
+  "id": "f0251",
+  "texto": "Resumo da Fase 4: sabores, estética, influenciadores e todo mundo usa são iscas. Meia-verdade fora de contexto é desinformação. E o vape é proibido no Brasil: ninguém garante o que tem dentro."
+ },
+ {
+  "id": "f0252",
+  "texto": "Você já viu vape aparecendo em vídeo ou post?"
+ },
+ {
+  "id": "f0253",
+  "texto": "Toda hora"
+ },
+ {
+  "id": "f0254",
+  "texto": "Às vezes"
+ },
+ {
+  "id": "f0255",
+  "texto": "Quase nunca"
+ },
+ {
+  "id": "f0256",
+  "texto": "Hmm… de onde veio esse pod? Vamos investigar."
+ },
+ {
+  "id": "f0257",
+  "texto": "O pod pirata"
+ },
+ {
+  "id": "f0258",
+  "texto": "O pod zero nicotina que você comprou veio de um depósito escondido. Sua garganta arde e a cabeça gira. Ele tinha nicotina, sim. Investigue a embalagem antes de jogar fora:"
+ },
+ {
+  "id": "f0259",
+  "texto": "Toque em todos os sinais de alerta:"
+ },
+ {
+  "id": "f0260",
+  "texto": "Sem registro e origem desconhecida"
+ },
+ {
+  "id": "f0261",
+  "texto": "0% nicotina sem nenhuma análise"
+ },
+ {
+  "id": "f0262",
+  "texto": "Rótulo sem tradução nem informações"
+ },
+ {
+  "id": "f0263",
+  "texto": "Lacre violado e lote em branco"
+ },
+ {
+  "id": "f0264",
+  "texto": "A cor da embalagem"
+ },
+ {
+  "id": "f0265",
+  "texto": "O nome do sabor"
+ },
+ {
+  "id": "f0266",
+  "texto": "A cor da embalagem, marcado"
+ },
+ {
+  "id": "f0267",
+  "texto": "Investigação concluída"
+ },
+ {
+  "id": "f0268",
+  "texto": "No Brasil, a Anvisa proíbe fabricar, importar, vender, distribuir e fazer propaganda de cigarros eletrônicos (RDC nº 855/2024). Ou seja, todo pod vendido aqui é ilegal e não tem controle de qualidade: o rótulo pode dizer qualquer coisa, e você não sabe o que está inalando."
+ },
+ {
+  "id": "f0269",
+  "texto": "Chegou a hora… última fase: o portão!"
+ },
+ {
+  "id": "f0270",
+  "texto": "O Nico está cobrando"
+ },
+ {
+  "id": "f0271",
+  "texto": "No meio do pátio, sua mão treme e o peito aperta. É a abstinência: irritação, ansiedade e uma vontade enorme de dar um trago. Essa é a consequência das doses que você aceitou."
+ },
+ {
+  "id": "f0272",
+  "texto": "A fissura vem em ondas e passa em poucos minutos. Respire fundo para atravessar a onda:"
+ },
+ {
+  "id": "f0273",
+  "texto": "Alívio de 5 minutos"
+ },
+ {
+  "id": "f0274",
+  "texto": "A fissura passou… porque você deu ao Nico o que ele queria. É assim que o ciclo se fecha: o alívio é só o fim da falta que a própria nicotina criou. Da próxima vez, a vontade volta mais forte."
+ },
+ {
+  "id": "f0275",
+  "texto": "Corrida pelo pátio"
+ },
+ {
+  "id": "f0276",
+  "texto": "O holofote vai varrer o pátio de novo em segundos. Você precisa atravessar correndo até o portão sem ser visto. Olhe o seu fôlego no topo da tela."
+ },
+ {
+  "id": "f0277",
+  "texto": "Precisa de pelo menos 70 de fôlego para chegar sem parar."
+ },
+ {
+  "id": "f0278",
+  "texto": "Ai… a tosse te travou."
+ },
+ {
+  "id": "f0279",
+  "texto": "Pego pelo holofote!"
+ },
+ {
+  "id": "f0280",
+  "texto": "A tosse e a falta de ar te travaram no meio do pátio. O aerossol irrita e inflama as vias aéreas, e isso cobra a conta justamente quando você precisa do pulmão."
+ },
+ {
+  "id": "f0281",
+  "texto": "Tempo para pensar"
+ },
+ {
+  "id": "f0282",
+  "texto": "Cela escura, silêncio. Enquanto espera, o alto-falante repete: Fôlego perdido não volta na hora em que você precisa."
+ },
+ {
+  "id": "f0283",
+  "texto": "Fato: parar de usar nicotina faz a respiração e a tosse melhorarem com o tempo. O corpo se recupera quando a gente para de agredir."
+ },
+ {
+  "id": "f0284",
+  "texto": "A lembrança"
+ },
+ {
+  "id": "f0285",
+  "texto": "O primeiro cadeado do portão mostra uma lembrança: o dia em que tudo começou, na saída da escola. Para abrir, escolha diferente desta vez."
+ },
+ {
+  "id": "f0286",
+  "texto": "Lucas diz: Dá um trago aí, é sabor melancia"
+ },
+ {
+  "id": "f0287",
+  "texto": "Bia diz: Relaxa, todo mundo aqui usa"
+ },
+ {
+  "id": "f0288",
+  "texto": "Lucas diz: Vai ficar de fora?"
+ },
+ {
+  "id": "f0289",
+  "texto": "Opção A: Tá bom, só um pra não ficar chato."
+ },
+ {
+  "id": "f0290",
+  "texto": "Opção B: Valeu, mas tô de boa. Bora pegar um açaí?"
+ },
+ {
+  "id": "f0291",
+  "texto": "Opção C: Vocês são burros de usar isso."
+ },
+ {
+  "id": "f0292",
+  "texto": "Opção D: Inventar uma desculpa e sair correndo sem falar nada."
+ },
+ {
+  "id": "f0293",
+  "texto": "Essa ainda não abre."
+ },
+ {
+  "id": "f0294",
+  "texto": "Seu não está certo, mas atacar a galera costuma gerar briga e mais pressão. Dá para recusar sem humilhar ninguém."
+ },
+ {
+  "id": "f0295",
+  "texto": "Lucas diz: Ah, para… só unzinho, ninguém vai saber"
+ },
+ {
+  "id": "f0296",
+  "texto": "Bia diz: Kkkk deixa de ser careta"
+ },
+ {
+  "id": "f0297",
+  "texto": "Eles insistiram. E agora?"
+ },
+ {
+  "id": "f0298",
+  "texto": "Opção A: Tá, se ninguém vai saber, beleza."
+ },
+ {
+  "id": "f0299",
+  "texto": "Opção B: Fazer uma palestra de 10 minutos sobre acroleína e metais."
+ },
+ {
+  "id": "f0300",
+  "texto": "Opção C: Já falei, tô de boa E aí, o açaí vai ou não?"
+ },
+ {
+  "id": "f0301",
+  "texto": "Opção D: Se continuarem, nunca mais falo com vocês."
+ },
+ {
+  "id": "f0302",
+  "texto": "A informação está certa! Mas sermão na hora da pressão costuma virar zoação. Guarde para uma conversa a sós, se o amigo quiser."
+ },
+ {
+  "id": "f0303",
+  "texto": "Técnica do disco riscado!"
+ },
+ {
+  "id": "f0304",
+  "texto": "Repetir o não com calma, sem se justificar, e mudar de assunto. Você recusa o pod, não as pessoas."
+ },
+ {
+  "id": "f0305",
+  "texto": "A amiga pede ajuda"
+ },
+ {
+  "id": "f0306",
+  "texto": "Bia fala: Na real… eu queria parar e não consigo. Fico irritada sem. Não sei o que fazer."
+ },
+ {
+  "id": "f0307",
+  "texto": "Qual a melhor forma de ajudar?"
+ },
+ {
+  "id": "f0308",
+  "texto": "Opção A: Ué, é só parar. Frescura."
+ },
+ {
+  "id": "f0309",
+  "texto": "Opção B: Que bom que você me contou. Bora procurar ajuda juntas? Pode ser alguém da família, da escola ou a UBS. Eu vou com você."
+ },
+ {
+  "id": "f0310",
+  "texto": "Opção C: Postar no grupo da turma pra todo mundo ajudar."
+ },
+ {
+  "id": "f0311",
+  "texto": "Opção D: Se você não parar, não sou mais sua amiga."
+ },
+ {
+  "id": "f0312",
+  "texto": "Dependência de nicotina é real. Ela muda o cérebro, e é só parar faz a pessoa se sentir julgada e desistir de pedir ajuda."
+ },
+ {
+  "id": "f0313",
+  "texto": "Expor a Bia quebra a confiança que ela teve em você. Ajuda boa é com cuidado e privacidade."
+ },
+ {
+  "id": "f0314",
+  "texto": "Ameaça e culpa afastam. O que ajuda de verdade é acolher sem julgar e caminhar junto."
+ },
+ {
+  "id": "f0315",
+  "texto": "Olha só, que fera!"
+ },
+ {
+  "id": "f0316",
+  "texto": "Acolhimento sem julgamento!"
+ },
+ {
+  "id": "f0317",
+  "texto": "Escutar, não julgar e ajudar a buscar apoio. O SUS oferece tratamento gratuito para parar de usar nicotina, nas UBS, e o Disque Saúde 136 orienta. Ninguém precisa sair dessa sozinho."
+ },
+ {
+  "id": "f0318",
+  "texto": "O Varal da Conscientização"
+ },
+ {
+  "id": "f0319",
+  "texto": "O último cadeado não pede resposta certa: pede a sua voz. Escreva uma mensagem curta para outros jovens, sobre o que você aprendeu ou como evitar o vape. Ela vai para o seu certificado."
+ },
+ {
+  "id": "f0320",
+  "texto": "Vape não é vapor, é aerossol"
+ },
+ {
+  "id": "f0321",
+  "texto": "Meu não é minha escolha"
+ },
+ {
+  "id": "f0322",
+  "texto": "Seu pulmão não é descartável"
+ },
+ {
+  "id": "f0323",
+  "texto": "Pedir ajuda é coragem"
+ },
+ {
+  "id": "f0324",
+  "texto": "Mensagem pendurada!"
+ },
+ {
+  "id": "f0325",
+  "texto": "Leve essa mensagem também para o Varal da Conscientização da turma. O portão está abrindo…"
+ },
+ {
+  "id": "f0326",
+  "texto": "clank! O portão abriu!"
+ },
+ {
+  "id": "f0327",
+  "texto": "Resumo da Fase 5: autonomia é dizer não sem precisar se justificar, acolher quem quer parar e saber onde buscar ajuda."
+ },
+ {
+  "id": "f0328",
+  "texto": "Qual dessas frases combina mais com você?"
+ },
+ {
+  "id": "f0329",
+  "texto": "Não curto, valeu"
+ },
+ {
+  "id": "f0330",
+  "texto": "Tô de boa"
+ },
+ {
+  "id": "f0331",
+  "texto": "Prefiro não"
+ },
+ {
+  "id": "f0332",
+  "texto": "Tenho a minha"
+ },
+ {
+  "id": "f0333",
+  "texto": "Você atravessou o portão… mas o Nico veio junto. Pedir ajuda não é vergonha, tá? Dá pra sair dessa."
+ },
+ {
+  "id": "f0334",
+  "texto": "Você atravessou o portão, mas a dependência não fica na prisão: ela vai com você. Olhe para trás na imagem. Sair dessa é possível, e ninguém precisa fazer isso sozinho: fale com um adulto de confiança ou procure a UBS. O SUS oferece apoio gratuito, e o Disque Saúde atende no 136."
+ },
+ {
+  "id": "f0335",
+  "texto": "Jogue de novo e veja como a história muda com outras escolhas."
+ },
+ {
+  "id": "f0336",
+  "texto": "Seu certificado de fuga está pronto! Você pode baixar e guardar."
+ },
+ {
+  "id": "f0337",
+  "texto": "Confira a sua pontuação final."
+ },
+ {
+  "id": "f0338",
+  "texto": "Nicotina, marcado"
+ },
+ {
+  "id": "f0339",
+  "texto": "Nicotina, desmarcado"
+ },
+ {
+  "id": "f0340",
+  "texto": "Só água pura, desmarcado"
+ },
+ {
+  "id": "f0341",
+  "texto": "Propilenoglicol e glicerina, marcado"
+ },
+ {
+  "id": "f0342",
+  "texto": "Propilenoglicol e glicerina, desmarcado"
+ },
+ {
+  "id": "f0343",
+  "texto": "Vitaminas, marcado"
+ },
+ {
+  "id": "f0344",
+  "texto": "Vitaminas, desmarcado"
+ },
+ {
+  "id": "f0345",
+  "texto": "Formaldeído e acroleína, marcado"
+ },
+ {
+  "id": "f0346",
+  "texto": "Formaldeído e acroleína, desmarcado"
+ },
+ {
+  "id": "f0347",
+  "texto": "Oxigênio extra, marcado"
+ },
+ {
+  "id": "f0348",
+  "texto": "Oxigênio extra, desmarcado"
+ },
+ {
+  "id": "f0349",
+  "texto": "Metais (níquel, chumbo), marcado"
+ },
+ {
+  "id": "f0350",
+  "texto": "Metais (níquel, chumbo), desmarcado"
+ },
+ {
+  "id": "f0351",
+  "texto": "Partículas ultrafinas, marcado"
+ },
+ {
+  "id": "f0352",
+  "texto": "Partículas ultrafinas, desmarcado"
+ },
+ {
+  "id": "f0353",
+  "texto": "Náusea ou vômito, marcado"
+ },
+ {
+  "id": "f0354",
+  "texto": "Náusea ou vômito, desmarcado"
+ },
+ {
+  "id": "f0355",
+  "texto": "Tontura, marcado"
+ },
+ {
+  "id": "f0356",
+  "texto": "Tontura, desmarcado"
+ },
+ {
+  "id": "f0357",
+  "texto": "Coração acelerado, marcado"
+ },
+ {
+  "id": "f0358",
+  "texto": "Coração acelerado, desmarcado"
+ },
+ {
+  "id": "f0359",
+  "texto": "Suor frio, marcado"
+ },
+ {
+  "id": "f0360",
+  "texto": "Suor frio, desmarcado"
+ },
+ {
+  "id": "f0361",
+  "texto": "Sono tranquilo e relaxado, desmarcado"
+ },
+ {
+  "id": "f0362",
+  "texto": "Mais força nos músculos, marcado"
+ },
+ {
+  "id": "f0363",
+  "texto": "Mais força nos músculos, desmarcado"
+ },
+ {
+  "id": "f0364",
+  "texto": "Falta de ar, marcado"
+ },
+ {
+  "id": "f0365",
+  "texto": "Falta de ar, desmarcado"
+ },
+ {
+  "id": "f0366",
+  "texto": "Um espirro isolado, desmarcado"
+ },
+ {
+  "id": "f0367",
+  "texto": "Dor no peito, marcado"
+ },
+ {
+  "id": "f0368",
+  "texto": "Dor no peito, desmarcado"
+ },
+ {
+  "id": "f0369",
+  "texto": "Uma leve preguiça de manhã, marcado"
+ },
+ {
+  "id": "f0370",
+  "texto": "Uma leve preguiça de manhã, desmarcado"
+ },
+ {
+  "id": "f0371",
+  "texto": "Tosse que não passa, marcado"
+ },
+ {
+  "id": "f0372",
+  "texto": "Tosse que não passa, desmarcado"
+ },
+ {
+  "id": "f0373",
+  "texto": "Chiado ao respirar, marcado"
+ },
+ {
+  "id": "f0374",
+  "texto": "Chiado ao respirar, desmarcado"
+ },
+ {
+  "id": "f0375",
+  "texto": "Novo sabor melancia gelo é só parte do app, não é isca. Continue procurando!"
+ },
+ {
+  "id": "f0376",
+  "texto": "todo mundo da galera já tá usando, é só parte do app, não é isca. Continue procurando!"
+ },
+ {
+  "id": "f0377",
+  "texto": "nem tem cheiro e é tão leve é só parte do app, não é isca. Continue procurando!"
+ },
+ {
+  "id": "f0378",
+  "texto": "#aesthetic #vibe é só parte do app, não é isca. Continue procurando!"
+ },
+ {
+  "id": "f0379",
+  "texto": "48,2 mil é só parte do app, não é isca. Continue procurando!"
+ },
+ {
+  "id": "f0380",
+  "texto": "Ver tradução é só parte do app, não é isca. Continue procurando!"
+ },
+ {
+  "id": "f0381",
+  "texto": "Sabor doce: dá cara de bala e atrai quem nunca fumou."
+ },
+ {
+  "id": "f0382",
+  "texto": "Falso todo mundo usa: na real, a maioria dos adolescentes não usa."
+ },
+ {
+  "id": "f0383",
+  "texto": "Minimiza o risco: cheiro e leveza não dizem nada sobre o que vai pro pulmão."
+ },
+ {
+  "id": "f0384",
+  "texto": "Estética: vende estilo, não informação."
+ },
+ {
+  "id": "f0385",
+  "texto": "Prova social: curtida mede alcance, não segurança."
+ },
+ {
+  "id": "f0386",
+  "texto": "Curiosidade, marcado"
+ },
+ {
+  "id": "f0387",
+  "texto": "Curiosidade, desmarcado"
+ },
+ {
+  "id": "f0388",
+  "texto": "Sabores e aparência bonita, marcado"
+ },
+ {
+  "id": "f0389",
+  "texto": "Sabores e aparência bonita, desmarcado"
+ },
+ {
+  "id": "f0390",
+  "texto": "Influência e pressão dos amigos, marcado"
+ },
+ {
+  "id": "f0391",
+  "texto": "Influência e pressão dos amigos, desmarcado"
+ },
+ {
+  "id": "f0392",
+  "texto": "Propaganda e influenciadores, marcado"
+ },
+ {
+  "id": "f0393",
+  "texto": "Propaganda e influenciadores, desmarcado"
+ },
+ {
+  "id": "f0394",
+  "texto": "Recomendação de médicos, desmarcado"
+ },
+ {
+  "id": "f0395",
+  "texto": "A ideia de que é inofensivo, marcado"
+ },
+ {
+  "id": "f0396",
+  "texto": "A ideia de que é inofensivo, desmarcado"
+ },
+ {
+  "id": "f0397",
+  "texto": "Porque melhora o desempenho no esporte, marcado"
+ },
+ {
+  "id": "f0398",
+  "texto": "Porque melhora o desempenho no esporte, desmarcado"
+ },
+ {
+  "id": "f0399",
+  "texto": "Estresse e ansiedade, marcado"
+ },
+ {
+  "id": "f0400",
+  "texto": "Estresse e ansiedade, desmarcado"
+ },
+ {
+  "id": "f0401",
+  "texto": "Sem registro e origem desconhecida, marcado"
+ },
+ {
+  "id": "f0402",
+  "texto": "Sem registro e origem desconhecida, desmarcado"
+ },
+ {
+  "id": "f0403",
+  "texto": "0% nicotina sem nenhuma análise, marcado"
+ },
+ {
+  "id": "f0404",
+  "texto": "0% nicotina sem nenhuma análise, desmarcado"
+ },
+ {
+  "id": "f0405",
+  "texto": "Rótulo sem tradução nem informações, marcado"
+ },
+ {
+  "id": "f0406",
+  "texto": "Rótulo sem tradução nem informações, desmarcado"
+ },
+ {
+  "id": "f0407",
+  "texto": "Lacre violado e lote em branco, marcado"
+ },
+ {
+  "id": "f0408",
+  "texto": "Lacre violado e lote em branco, desmarcado"
+ },
+ {
+  "id": "f0409",
+  "texto": "A cor da embalagem, desmarcado"
+ },
+ {
+  "id": "f0410",
+  "texto": "O nome do sabor, marcado"
+ },
+ {
+  "id": "f0411",
+  "texto": "O nome do sabor, desmarcado"
+ },
+ {
+  "id": "f0412",
+  "texto": "Boa escolha!"
+ },
+ {
+  "id": "f0413",
+  "texto": "Isso! Você decidiu por você."
+ },
+ {
+  "id": "f0414",
+  "texto": "Gostei de ver!"
+ },
+ {
+  "id": "f0415",
+  "texto": "Uhul! Chegou sem tossir!"
+ },
+ {
+  "id": "f0416",
+  "texto": "Você está livre! Sem corrente nenhuma. Tô muito orgulhosa de você!"
+ },
+ {
+  "id": "f0417",
+  "texto": "Você saiu! Experimentou no caminho, mas aprendeu muito."
+ },
+ {
+  "id": "f0418",
+  "texto": "Voltei! Vou ler tudo pra você."
+ },
+ {
+  "id": "f0419",
+  "texto": "Oiê! Eu sou a Brisa. É assim que eu vou ler o jogo pra você."
+ },
+ {
+  "id": "f0420",
+  "texto": "12"
+ },
+ {
+  "id": "f0421",
+  "texto": "18"
+ },
+ {
+  "id": "f0422",
+  "texto": "21"
+ },
+ {
+  "id": "f0423",
+  "texto": "25"
+ },
+ {
+  "id": "f0424",
+  "texto": "30"
+ },
+ {
+  "id": "f0425",
+  "texto": "Cabeça limpa"
+ },
+ {
+  "id": "f0426",
+  "texto": "O Rato dá de ombros e volta a dormir. Foco total no próximo cadeado."
+ },
+ {
+  "id": "f0427",
+  "texto": "Acertou! É mito."
+ },
+ {
+  "id": "f0428",
+  "texto": "Acertou! É verdade."
+ },
+ {
+  "id": "f0429",
+  "texto": "Cadeado aberto! Você acertou 3 de 3."
+ },
+ {
+  "id": "f0430",
+  "texto": "Do seu jeito"
+ },
+ {
+  "id": "f0431",
+  "texto": "O Diretor fecha a cara. Você vai abrir sozinho, e vai entender como a armadilha funciona."
+ },
+ {
+  "id": "f0432",
+  "texto": "Segundo cadeado. No visor: Coloque em ordem como o Nico prende os detentos."
+ },
+ {
+  "id": "f0433",
+  "texto": "Toque nas etapas na ordem em que acontecem."
+ },
+ {
+  "id": "f0434",
+  "texto": "O efeito passa rápido: irritação, ansiedade e vontade de usar de novo"
+ },
+ {
+  "id": "f0435",
+  "texto": "A nicotina chega ao cérebro em poucos segundos"
+ },
+ {
+  "id": "f0436",
+  "texto": "O cérebro se adapta e precisa de mais para sentir o mesmo"
+ },
+ {
+  "id": "f0437",
+  "texto": "Pico de dopamina: sensação de prazer ou alívio"
+ },
+ {
+  "id": "f0438",
+  "texto": "Esse é o ciclo que prende!"
+ },
+ {
+  "id": "f0439",
+  "texto": "A nicotina dispara dopamina no sistema de recompensa, o efeito some rápido e o cérebro passa a cobrar a próxima dose. Com a tolerância, ele precisa de cada vez mais. Alguns pods podem ter tanta nicotina quanto um maço de cigarros, ou mais."
+ },
+ {
+  "id": "f0440",
+  "texto": "Confiança"
+ },
+ {
+  "id": "f0441",
+  "texto": "Que bom! Nunca ter começado é a melhor proteção. O Davi te dá um toca aqui. Falar a verdade com profissionais de saúde é sempre o melhor caminho."
+ },
+ {
+  "id": "f0442",
+  "texto": "Pergunta certeira"
+ },
+ {
+  "id": "f0443",
+  "texto": "O Fumaça desconversa e some. No Brasil, a venda de cigarros eletrônicos é proibida pela Anvisa: não existe pod com registro, e ninguém garante o que tem dentro."
+ },
+ {
+  "id": "f0444",
+  "texto": "Chegou ao portão!"
+ },
+ {
+  "id": "f0445",
+  "texto": "Pulmão sem irritação faz diferença: você correu sem tossir e ninguém te viu."
+ },
+ {
+  "id": "f0446",
+  "texto": "Ultimato aumenta a tensão. Você pode simplesmente repetir o não e, se o lugar não respeitar, se afastar com calma."
+ },
+ {
+  "id": "f0447",
+  "texto": "Você saiu sem levar o Nico junto. Nenhuma dose, nenhuma corrente. A melhor fuga é nunca entrar."
+ },
+ {
+  "id": "f0448",
+  "texto": "Cadeado aberto! Você acertou 2 de 3."
+ },
+ {
+  "id": "f0449",
+  "texto": "Desmascarado"
+ },
+ {
+  "id": "f0450",
+  "texto": "…Porque cliente viciado volta sempre, ele deixa escapar, e logo se arrepende. Você entendeu o modelo de negócio: quanto antes alguém começa, mais tempo fica preso."
+ },
+ {
+  "id": "f0451",
+  "texto": "Acolhido"
+ },
+ {
+  "id": "f0452",
+  "texto": "Obrigado por confiar em mim. O Davi explica que dá para parar, que o SUS tem tratamento gratuito e passa algumas estratégias. Pedir ajuda já é parte da saída."
+ },
+ {
+  "id": "f0453",
+  "texto": "Decisão firme"
+ },
+ {
+  "id": "f0454",
+  "texto": "Sem discussão, sem sermão. Um não curto já resolve."
+ },
+ {
+  "id": "f0455",
+  "texto": "Dá para entender: ninguém quer ficar de fora. Só que fazer algo pra não ficar chato é deixar a decisão com o grupo. E o só um é exatamente como o ciclo do cofre começa."
+ },
+ {
+  "id": "f0456",
+  "texto": "Sair é válido quando você se sente desconfortável. Mas um não curto e firme mostra que a escolha é sua, e costuma encerrar o assunto mais rápido."
+ },
+ {
+  "id": "f0457",
+  "texto": "Você escapou, mas experimentou no caminho. A boa notícia: quanto mais cedo a gente para, mais fácil é. Se a vontade voltar, você já conhece as saídas."
+ },
+ {
+  "id": "f0458",
+  "texto": "Novo aliado"
+ },
+ {
+  "id": "f0459",
+  "texto": "O Rato fica quieto… Comecei por zoeira. Agora não consigo ficar uma hora sem. Ele guarda o pod. Vou te ajudar a sair daqui. O Rato virou seu aliado, e isso vai fazer diferença mais tarde."
+ },
+ {
+  "id": "f0460",
+  "texto": "Cadeado aberto! Você acertou 1 de 3."
+ },
+ {
+  "id": "f0461",
+  "texto": "Rato (seu aliado) fala: Psiu… ouvi o diretor dizer que é a idade em que o cérebro fica pronto. Bem depois dos 20, mas antes dos 30."
+ },
+ {
+  "id": "f0462",
+  "texto": "Porta fechada"
+ },
+ {
+  "id": "f0463",
+  "texto": "Você tem direito de não falar, e o Davi respeita. Mas perde uma chance de tirar dúvidas e receber orientação, sem nenhum julgamento."
+ },
+ {
+  "id": "f0464",
+  "texto": "Tosse no meio do caminho…"
+ },
+ {
+  "id": "f0465",
+  "texto": "Você trava, tossindo e sem ar. Mas o Rato bate na grade do outro lado e o guarda vira o holofote para lá. Ufa! Tosse e falta de ar são sinais de vias aéreas irritadas pelo aerossol."
+ },
+ {
+  "id": "f0466",
+  "texto": "A onda passou!"
+ },
+ {
+  "id": "f0467",
+  "texto": "Você atravessou a fissura sem ceder. Respirar fundo, beber água, se mexer e conversar com alguém ajudam. Cada fissura vencida enfraquece a corrente."
+ }
+]

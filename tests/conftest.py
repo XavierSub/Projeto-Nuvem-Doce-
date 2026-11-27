@@ -12,7 +12,20 @@ import pytest
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
-GAME = (ROOT / "index.html").as_uri()
+import functools
+import http.server
+import threading
+
+
+class _Quiet(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, *a):
+        pass
+
+
+_srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(_Quiet, directory=str(ROOT)))
+threading.Thread(target=_srv.serve_forever, daemon=True).start()
+# O jogo é aberto por um servidor local, igual ao site no Render
+GAME = f"http://127.0.0.1:{_srv.server_address[1]}/index.html"
 SHOTS = ROOT / "tests" / "capturas"
 SHOTS.mkdir(parents=True, exist_ok=True)
 

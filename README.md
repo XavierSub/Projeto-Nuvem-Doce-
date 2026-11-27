@@ -39,14 +39,32 @@ Outra opção é ir em **New → Static Site**, escolher o repositório, deixar 
 
 | Recurso | Render (site próprio) | Página no claude.ai |
 |---|---|---|
-| Voz da narração | Só legenda (a voz da Brisa não existe fora do claude.ai) | Voz natural da Brisa (Chrome/Edge do computador) |
+| Voz da narração | Áudios gravados com voz neural (pasta `audio/`, em qualquer celular ou computador) | Voz natural da Brisa (Chrome/Edge do computador) |
 | Ranking | Só do aparelho | Do aparelho + geral compartilhado |
 | Certificado | Baixar PNG e imprimir | Baixar PNG |
 | Login | Não precisa | Precisa estar logado no claude.ai |
 
+## Voz da Brisa no Render (áudios gravados)
+
+A voz da Brisa do claude.ai não pode ser exportada, então o site no Render toca **arquivos .mp3** gerados com uma voz neural em português. A lista com todas as falas do jogo (467) já está em `audio/falas.json`.
+
+Para gerar os áudios, rode **no seu computador** (precisa de internet, leva alguns minutos):
+
+```bash
+pip install edge-tts
+python3 gerar_audios.py --testar     # gera 3 falas para você ouvir antes
+python3 gerar_audios.py              # gera todas
+git add audio && git commit -m "Áudios da Brisa" && git push
+```
+
+Para outra voz: `python3 gerar_audios.py --voz pt-BR-ThalitaMultilingualNeural`. Para mais devagar: `--velocidade -15%`.
+Se mudar textos do jogo, rode `python3 tests/coletar_falas.py` para atualizar a lista e gere de novo (os áudios que já existem são reaproveitados).
+
+Enquanto os áudios não forem gerados, a narração no Render aparece só em legenda.
+
 ## Testes automatizados
 
-São 43 testes que jogam sozinhos num Chrome automático: fluxo do jogo (todos os finais, fases extras, talentos, erros, ranking, certificado, segurança), interface (5 tamanhos de tela) e narração (o que a Brisa lê, a voz fixa e a parada ao avançar). Veja o resultado em [`tests/RELATORIO.md`](tests/RELATORIO.md).
+São 50 testes que jogam sozinhos num Chrome automático: fluxo do jogo (todos os finais, fases extras, talentos, erros, ranking, certificado, segurança), interface (5 tamanhos de tela), narração (o que a Brisa lê, a voz fixa e a parada ao avançar) e áudios gravados (ordem, parada, velocidade e se toda fala tem áudio). Veja o resultado em [`tests/RELATORIO.md`](tests/RELATORIO.md).
 
 ```bash
 pip install pytest playwright pillow

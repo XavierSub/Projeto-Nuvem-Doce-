@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fuga da Prisão Nuvem Doce</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%9A%A8%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
@@ -846,7 +847,7 @@ function scanner(c){
     const wrong=[...sel].filter(k=>!c.items[k].ok),miss=c.items.map((it,k)=>it.ok&&!sel.has(k)?k:-1).filter(k=>k>=0);
     if(!wrong.length&&!miss.length){$('#go').remove();b.querySelectorAll('.sc').forEach(x=>x.style.pointerEvents='none');solved(c.explain);return}
     wrong.forEach(k=>b.querySelector(`.sc[data-k="${k}"]`).classList.add('bad'));
-    failed(`<h3>🚨 O scanner apitou!</h3>${wrong.length?`<p>Em vermelho: ${wrong.map(k=>c.items[k].why).join(' ')}</p>`:''}${miss.length?`<p>E ainda falta${miss.length>1?'m':''} <b>${miss.length}</b> substância${miss.length>1?'s':''} que está${miss.length>1?'o':''} no aerossol. Procure de novo!</p>`:''}`);
+    failed(`<h3>🚨 O scanner apitou!</h3>${wrong.length?`<p data-say="Os itens em vermelho não fazem parte do aerossol.">Em vermelho: ${wrong.map(k=>c.items[k].why).join(' ')}</p>`:''}${miss.length?`<p data-say="E ainda falta coisa que está no aerossol. Procure de novo!">E ainda falta${miss.length>1?'m':''} <b>${miss.length}</b> substância${miss.length>1?'s':''} que está${miss.length>1?'o':''} no aerossol. Procure de novo!</p>`:''}`);
   };
 }
 
@@ -902,7 +903,7 @@ function order(c){
 
 function hunt(c){
   const b=setBody(`${head(c.tag,c.title)}${c.intro}
-    <div class="post hunting"><div class="ph">🍉✨💨</div><div class="pb"><div class="pu">@vibe.cloudz ✔️</div>${c.post}</div></div>
+    <div class="post hunting"><div class="ph">🍉✨💨</div><div class="pb" data-say="O post diz: Novo sabor melancia gelo! Todo mundo da galera já tá usando, nem tem cheiro e é tão leve. Hashtag aesthetic, hashtag vibe. Quarenta e oito mil curtidas. Agora toque nas cinco iscas escondidas no texto."><div class="pu">@vibe.cloudz ✔️</div>${c.post}</div></div>
     <div class="counter" id="cnt">Iscas encontradas: 0 / ${Object.keys(c.baits).length}</div>
     <div class="baitlog" id="log"></div><div id="fb"></div>`);
   const total=Object.keys(c.baits).length;let found=0,decoyHits=0;
@@ -1023,7 +1024,7 @@ function craving(){
 
 function race(){
   setBody(`<span class="choice-tag">🏃 TESTE DE FÔLEGO</span><h2>Corrida pelo pátio</h2>
-    <div class="story">O holofote vai varrer o pátio de novo em segundos. Você precisa <b>atravessar correndo</b> até o portão sem ser visto. Seu fôlego agora: <b>${F}</b>.</div>
+    <div class="story" data-say="O holofote vai varrer o pátio de novo em segundos. Você precisa atravessar correndo até o portão sem ser visto. Olhe o seu fôlego no topo da tela.">O holofote vai varrer o pátio de novo em segundos. Você precisa <b>atravessar correndo</b> até o portão sem ser visto. Seu fôlego agora: <b>${F}</b>.<span hidden></span></div>
     <p class="muted">Precisa de pelo menos 70 de fôlego para chegar sem parar.</p>${''}
     <button class="btn" id="run">🏃 CORRER!</button><div id="fb"></div>`);
   $('#run').onclick=()=>{
@@ -1250,7 +1251,7 @@ function extraScan(c,done){
       $('#nx').onclick=()=>{sfx.click();done()};scrollToEl($('#fb'));return;
     }
     tries++;wrong.forEach(k=>b.querySelector(`.sc[data-k="${k}"]`).classList.add('bad'));
-    failed(`<h3>🚨 Ainda não.</h3>${wrong.length?`<p>${wrong.map(k=>c.items[k].why).join(' ')}</p>`:''}${miss?`<p>Falta${miss>1?'m':''} <b>${miss}</b>. Olhe de novo!</p>`:''}`);
+    failed(`<h3>🚨 Ainda não.</h3>${wrong.length?`<p data-say="Os itens em vermelho não estão certos.">${wrong.map(k=>c.items[k].why).join(' ')}</p>`:''}${miss?`<p data-say="Ainda falta marcar alguma coisa. Olhe de novo!">Falta${miss>1?'m':''} <b>${miss}</b>. Olhe de novo!</p>`:''}`);
   };
 }
 
@@ -1439,7 +1440,7 @@ const PH=[
      {t:'💪 Porque melhora o desempenho no esporte',why:'Vape piora o fôlego. Isso é mito.'},{t:'😟 Estresse e ansiedade',ok:true}],
     explain:`<h3>🔓 Fatores mapeados!</h3><p><b>Curiosidade, sabores, amigos, propaganda, a falsa ideia de que é inofensivo e o estresse</b> estão entre os principais motivos. Saber disso ajuda a perceber quando alguém está tentando te influenciar.</p>`}),
    ()=>mcq({tag:'Fase 4 · Cadeado 3 de 3',title:'🕵️ Checagem de fake',
-    intro:`<p>Nos comentários do post, alguém escreveu:</p><div class="post"><div class="comment"><b>@leo_zz</b> li que vape é 95% mais seguro que cigarro, então pra gente tá liberado 🤙</div></div>`,
+    intro:`<p>Nos comentários do post, alguém escreveu:</p><div class="post"><div class="comment" data-say="O Léo comentou: li que vape é noventa e cinco por cento mais seguro que cigarro, então pra gente tá liberado."><b>@leo_zz</b> li que vape é 95% mais seguro que cigarro, então pra gente tá liberado 🤙</div></div>`,
     q:'Como desmontar esse argumento?',
     opts:[
      {t:'Se tem número e porcentagem, deve ser verdade.',why:`<p>Número sem contexto é uma tática clássica de desinformação. Sempre pergunte: <b>comparado com o quê? Para quem? Quem disse?</b></p>`},
@@ -1628,7 +1629,7 @@ function intro(){
   resetRun();drawProg();drawStatus();
   renderScene('cela','BLOCO N · CELA 17 · 03:14',0);
   setBody(`<div class="tag">🚨 Alerta de fuga · 5 fases · 15 cadeados · ~10 min</div>
-    <h2>${esc(CH.name)}, acorde.</h2>
+    <h2 data-say="Ei, acorda!">${esc(CH.name)}, acorde.</h2>
     <div class="story">Você acorda numa cela fria. O ar tem cheiro de <b>melancia gelada</b>, e no colchão há um pod piscando. Na outra cama, um colega de cela te observa. O alto-falante chia:<br><br><i id="voice"></i></div>
     <p>Você não é culpado de nada: essa prisão foi <b>projetada</b> para prender. Atravesse as 5 fases (cela, cofre, raio-X, pátio e portão) e saia antes do amanhecer. Escolhas ruins abrem <b>fases extras</b>.</p>
     <div class="breakdown">
@@ -1639,7 +1640,7 @@ function intro(){
     </div>
     <p class="muted">Erro em pergunta é aprendizado (só toca o alarme). Escolha ruim tem <b>consequência</b>.</p>
     <button class="btn" id="go">🔦 Começar a fuga</button>`);
-  {const vtxt=`Bem-vindo à Nuvem Doce, ${CH.name}. Aqui quem manda é o carcereiro Nico. Ninguém entra achando que vai ficar… mas fica.`;const stE=$('#body .story');stE.dataset.say=stE.innerText+' '+vtxt}
+  {const vtxt=`Bem-vindo à Nuvem Doce. Aqui quem manda é o carcereiro Nico. Ninguém entra achando que vai ficar… mas fica.`;const stE=$('#body .story');stE.dataset.say=stE.innerText+' '+vtxt}
   setTimeout(()=>typeText($('#voice'),`"Bem-vindo à Nuvem Doce, ${CH.name}. Aqui quem manda é o carcereiro Nico. Ninguém entra achando que vai ficar… mas fica."`),400);
   $('#go').onclick=()=>{sfx.click();startTimer();startPhase(0)};
 }
@@ -1667,13 +1668,13 @@ async function final(){
     <div class="stars">${[1,2,3].map(i=>`<span class="${i<=stars?'':'off'}">⭐</span>`).join('')}</div>
     <div class="rank">${rank}</div>
     <p style="text-align:center">${E.p}</p>
-    <div class="cert"><div class="ct">CERTIFICADO DE FUGA</div><p>Certificamos que</p><div class="cn" id="certname"></div>
+    <div class="cert" data-say="Seu certificado de fuga está pronto! Você pode baixar e guardar."><div class="ct">CERTIFICADO DE FUGA</div><p>Certificamos que</p><div class="cn" id="certname"></div>
       <p>escapou da Prisão Nuvem Doce depois de abrir <b>${done} cadeados</b> sobre os riscos do cigarro eletrônico.</p>
       ${VARAL?'<div class="msg" id="certmsg"></div>':''}
       <div class="meta">${new Date().toLocaleDateString('pt-BR')} · ${E.tag}</div>
       <div class="meta">Ação de educação em saúde · Enfermagem UniCerrado</div><div class="seal">🏅</div></div>
     <div class="certbtns" style="${window.top===window?'':'grid-template-columns:1fr'}"><button class="btn go" id="dlcert">⬇️ Baixar certificado</button>${window.top===window?'<button class="btn ghost" id="prcert">🖨️ Imprimir</button>':''}</div>
-    <div class="breakdown">
+    <div class="breakdown" data-say="Confira a sua pontuação final.">
       <div><span>Cadeados e escolhas</span><span>${score}</span></div>
       <div><span>Bônus 🫁 fôlego final</span><span>+${bonusF}</span></div>
       <div><span>Bônus ⛓️ liberdade (100 − ${D})</span><span>+${bonusD}</span></div>
@@ -1825,12 +1826,12 @@ const N={
   bad:['Hmm… essa escolha vai trazer consequência.','Eita… o Nico gostou dessa.'],
   raceOk:'Uhul! Chegou sem tossir!',raceBad:'Ai… a tosse te travou.',
   gate:['Grade aberta! Mandou muito bem nessa fase!','Clank! Mais uma fase vencida!'],
-  end:{livre:n=>`${n}, você está livre! Sem corrente nenhuma. Tô muito orgulhosa de você!`,
-    cicatriz:n=>`Você saiu, ${n}! Experimentou no caminho, mas aprendeu muito.`,
-    corrente:n=>`Você atravessou o portão, ${n}… mas o Nico veio junto. Pedir ajuda não é vergonha, tá? Dá pra sair dessa.`}
+  end:{livre:n=>`Você está livre! Sem corrente nenhuma. Tô muito orgulhosa de você!`,
+    cicatriz:n=>`Você saiu! Experimentou no caminho, mas aprendeu muito.`,
+    corrente:n=>`Você atravessou o portão… mas o Nico veio junto. Pedir ajuda não é vergonha, tá? Dá pra sair dessa.`}
 };
 const pick=a=>a[Math.floor(Math.random()*a.length)];
-const NARR={on:true,tts:null,web:!!(window.speechSynthesis&&window.SpeechSynthesisUtterance),hideT:null,buf:[],flushT:null,seq:0,ttsItems:[],lastMicro:0,ttsFail:0};
+const NARR={on:true,tts:null,hideT:null,buf:[],flushT:null,seq:0,ttsItems:[],lastMicro:0,ttsFail:0};
 const LISTEN='<button class="listen" type="button">🔊 Ouvir</button>';
 const BRISA=`<svg viewBox="0 0 80 70" aria-hidden="true">
   <path d="M6 20 q8 -6 16 0 M2 30 q6 -4 12 0" stroke="#9fe6ff" stroke-width="2.5" fill="none" stroke-linecap="round" class="wind"/>
@@ -1844,24 +1845,46 @@ const VKEY='fugaVoz';
 let VPREF={engine:'claude',claudeVoice:'airy',webName:'',rate:1};
 try{const s=JSON.parse(localStorage.getItem(VKEY)||'null');if(s&&typeof s==='object')VPREF.rate=Number(s.rate)<.95?.85:1}catch(e){}
 function saveVPref(){try{localStorage.setItem(VKEY,JSON.stringify(VPREF))}catch(e){}}
+/* Áudios gravados da Brisa (pasta audio/, usada no site próprio/Render) */
+const AUDIO={map:null,ready:false,base:'audio/',cur:null,q:[],waitT:null};
+function initAudio(){
+  if(window.top!==window){AUDIO.ready=true;return}
+  try{
+    fetch(AUDIO.base+'manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(m=>{
+      if(m&&typeof m==='object'&&!Array.isArray(m)&&Object.keys(m).length)AUDIO.map=m;
+    }).catch(()=>{}).finally(()=>{AUDIO.ready=true;updVoiceUI()});
+  }catch(e){AUDIO.ready=true}
+}
 function engine(){
-  if(NARR.tts)return 'claude';            /* a voz da Brisa chegou (mesmo atrasada): usa ela */
-  if(!NARR.ttsReady)return null;
+  if(NARR.tts)return 'claude';            /* voz da Brisa no claude.ai (mesmo se chegar atrasada) */
+  if(AUDIO.map)return 'audio';            /* áudios gravados no site próprio */
+  if(!NARR.ttsReady||!AUDIO.ready)return null;
   return 'none';
 }
-const voiceAvail=()=>!!NARR.tts;
-function updVoiceUI(){document.body.classList.toggle('novoice',!voiceAvail())}
-
-/* Voz do aparelho: prefere vozes neurais ("Natural", "Online", Google) em pt-BR */
-let webVoice=null;
-function ptVoices(){try{return (speechSynthesis.getVoices()||[]).filter(v=>/^pt/i.test(v.lang))}catch(e){return []}}
-function voiceScore(v){let s=0;if(/pt[-_]BR/i.test(v.lang))s+=10;if(/natural|neural|online/i.test(v.name))s+=8;if(/google/i.test(v.name))s+=6;if(/francisca|thalita|antonio|luciana|felipe/i.test(v.name))s+=3;if(/espeak|compact/i.test(v.name))s-=10;return s}
-function pickWebVoice(){
-  if(NARR.webLocked&&webVoice)return;
-  const vs=ptVoices();
-  webVoice=(VPREF.webName&&vs.find(v=>v.name===VPREF.webName))||vs.sort((a,b)=>voiceScore(b)-voiceScore(a))[0]||null;
+const voiceAvail=()=>!!NARR.tts||!!AUDIO.map;
+function audioSpeak(items,append,seq){
+  if(!append)audioStop();
+  items.forEach(it=>AUDIO.q.push({...it,seq}));
+  if(!AUDIO.cur&&!AUDIO.waitT)audioNext();
 }
-if(NARR.web){pickWebVoice();try{speechSynthesis.addEventListener('voiceschanged',pickWebVoice)}catch(e){try{speechSynthesis.onvoiceschanged=pickWebVoice}catch(_){}}}
+function audioStop(){AUDIO.q=[];clearTimeout(AUDIO.waitT);AUDIO.waitT=null;if(AUDIO.cur){try{AUDIO.cur.pause()}catch(e){}AUDIO.cur=null}}
+function audioNext(){
+  clearTimeout(AUDIO.waitT);AUDIO.waitT=null;
+  let it=AUDIO.q.shift();
+  while(it&&it.seq!==NARR.seq)it=AUDIO.q.shift();
+  if(!it){talking(false);clearHL();scheduleHide(1500);return}
+  hl(it.el);setBubble(it.raw);
+  const f=AUDIO.map[it.text];
+  if(!f||typeof f!=='string'||!/^[\w.-]+$/.test(f)){talking(false);AUDIO.waitT=setTimeout(audioNext,Math.min(4000,600+it.text.length*45));return}
+  const a=new Audio(AUDIO.base+f);AUDIO.cur=a;
+  try{a.playbackRate=VPREF.rate}catch(e){}
+  a.onplaying=()=>{if(AUDIO.cur===a)talking(true)};
+  const fim=()=>{if(AUDIO.cur===a){AUDIO.cur=null;audioNext()}};
+  a.onended=fim;a.onerror=fim;
+  const pr=a.play();if(pr&&pr.catch)pr.catch(()=>{if(AUDIO.cur===a){AUDIO.cur=null;talking(false);AUDIO.waitT=setTimeout(audioNext,400)}});
+  const nx=AUDIO.q[0];if(nx&&AUDIO.map[nx.text]){const pre=new Audio();pre.preload='auto';pre.src=AUDIO.base+AUDIO.map[nx.text]}
+}
+function updVoiceUI(){document.body.classList.toggle('novoice',!voiceAvail())}
 
 /* Voz natural do Claude */
 function initTTS(tries=0){
@@ -1895,27 +1918,13 @@ function clearHL(){document.querySelectorAll('.reading').forEach(x=>x.classList.
 function hl(el){clearHL();if(el&&el.isConnected){el.classList.add('reading');const r=el.getBoundingClientRect();if(r.top<70||r.bottom>innerHeight-120)el.scrollIntoView({behavior:'smooth',block:'center'})}}
 function cleanSpeech(t){return String(t).replace(/\p{Extended_Pictographic}|️|‍|[█▌·]/gu,' ').replace(/[“”"]/g,'').replace(/(^|[^\p{L}])([A-ZÀ-ÚÇ]{3,})(?=[^\p{L}]|$)/gu,(m,a,w)=>a+(['EVALI','SUS','UBS','RDC'].includes(w)?w:w.toLowerCase())).replace(/\s+/g,' ').trim()}
 
-function webSpeakItems(items,append,seq){
-  if(!webVoice)pickWebVoice();
-  items.forEach((it,ii)=>{
-    const parts=it.text.match(/[^.!?…]+[.!?…]*\s*/g)||[it.text];const chunks=[];let cur='';
-    parts.forEach(p=>{if((cur+p).length>170&&cur){chunks.push(cur);cur=p}else cur+=p});if(cur.trim())chunks.push(cur);
-    chunks.forEach((c,ci)=>{
-      const u=new SpeechSynthesisUtterance(c.trim());u.lang='pt-BR';u.rate=.95*VPREF.rate;u.pitch=1.05;if(webVoice)u.voice=webVoice;
-      u.onstart=()=>{if(seq!==NARR.seq)return;talking(true);if(ci===0){hl(it.el);setBubble(it.raw)}};
-      u.onend=()=>{if(seq!==NARR.seq)return;if(ii===items.length-1&&ci===chunks.length-1&&!speechSynthesis.pending){talking(false);clearHL();scheduleHide(1500)}};
-      u.onerror=()=>{if(seq!==NARR.seq)return;talking(false)};
-      try{speechSynthesis.speak(u)}catch(e){}
-    });
-  });
-}
 /* Fala uma lista de itens, em ordem. append=true continua depois do que já está falando */
 function speakItems(items,append){
   items=items.map(i=>({raw:String(i.text).trim(),text:cleanSpeech(i.text),el:i.el})).filter(i=>i.text);
   if(!NARR.on||!items.length)return;
   const eng=engine();
   if(eng===null){const w=(NARR.waitN||0);if(w<15){NARR.waitN=w+1;setTimeout(()=>speakItems(items,append),250);return}NARR.waitN=0;setBubble(items[0].raw);scheduleHide(Math.max(3000,items[0].raw.length*60));return}
-  if(!append){NARR.seq++;try{if(NARR.web)speechSynthesis.cancel()}catch(e){}clearHL()}
+  if(!append){NARR.seq++;clearHL()}
   const seq=NARR.seq;
   setBubble(items[0].raw);
   if(eng==='claude'&&!NARR.tts){scheduleHide(Math.max(3000,items[0].raw.length*60));return}
@@ -1932,12 +1941,12 @@ function speakItems(items,append){
     });
     return;
   }
-  if(eng==='web'){NARR.webLocked=true;webSpeakItems(items,append,seq);return}
+  if(eng==='audio'){audioSpeak(items,append,seq);return}
   scheduleHide(Math.max(3000,items[0].raw.length*60));
 }
 function stopVoice(){
   NARR.seq++;NARR.buf=[];clearTimeout(NARR.flushT);
-  try{if(NARR.web)speechSynthesis.cancel()}catch(e){}
+  audioStop();
   try{if(NARR.tts&&NARR.tts.active())NARR.tts.stop().catch(()=>{})}catch(e){}
   talking(false);clearHL();
 }
@@ -1947,7 +1956,7 @@ function voicePanel(){
   const old=$('#vpanel');if(old)old.remove();
   const d=document.createElement('div');d.id='vpanel';d.className='vpanel';
   d.innerHTML=`<div class="vbox"><div class="tag">🎙️ Voz da narração</div><h2>A voz da Brisa</h2>
-    <div class="hello" style="justify-content:flex-start"><div class="b">${BRISA}</div><div class="t">${NARR.tts?'Voz natural e tranquila da Brisa.':'Neste aparelho a voz da Brisa não está disponível, então a narração aparece só em legenda. Para ouvir a Brisa, abra o jogo no Chrome ou no Edge do computador, pelo claude.ai.'}</div></div>
+    <div class="hello" style="justify-content:flex-start"><div class="b">${BRISA}</div><div class="t">${NARR.tts||AUDIO.map?'Voz natural e tranquila da Brisa.':'Neste aparelho a voz da Brisa não está disponível, então a narração aparece só em legenda. Para ouvir a Brisa, abra o jogo no Chrome ou no Edge do computador, pelo claude.ai.'}</div></div>
     <div class="row"><div class="lbl">Velocidade</div><div class="sw tx" id="vrate">${[[1,'Normal'],[.85,'🐢 Devagar']].map(([r,n])=>`<button data-r="${r}" class="${Math.abs(VPREF.rate-r)<.01?'on':''}">${n}</button>`).join('')}</div></div>
     <button class="btn" id="vtest">▶️ Ouvir um teste</button><button class="btn ghost" id="vclose">Pronto</button></div>`;
   document.body.appendChild(d);
@@ -1974,7 +1983,7 @@ function itemsFrom(root){
     if(el.matches('.opt')&&el.querySelector('.k'))t='Opção '+el.querySelector('.k').textContent+': '+[...el.children].slice(1).map(x=>x.innerText).join(' ');
     else if(el.matches('.ch'))t='Opção '+(++chN)+': '+t;
     else if(el.matches('.door'))t='Porta '+t;
-    else if(el.matches('.breakdown'))t=[...el.children].map(r=>[...r.children].map(c=>c.innerText.trim()).join(': ')).join('. ')+'.';
+    else if(el.matches('.breakdown')&&!el.dataset.say)t=[...el.children].map(r=>[...r.children].map(c=>c.innerText.trim()).join(': ')).join('. ')+'.';
     else if(el.matches('.npc .say')){const s=el.querySelector('small');t=(s?s.innerText.split(',')[0]+' fala: ':'')+t.replace(s?s.innerText:'','')}
     else if(el.matches('.mvfront'))t=t.replace('DETENTO ANTIGO DIZ:','Um detento antigo diz:').replace(/[.\s"]+$/,'')+'. É mito ou verdade?';
     if(!optsAnnounced&&el.matches('.opt,.ch')&&root.querySelectorAll('.opt,.ch').length>1){optsAnnounced=true;out.push({text:'Escolha uma opção:'})}
@@ -2013,7 +2022,7 @@ new MutationObserver(ms=>{const seen=new Set();ms.forEach(m=>m.addedNodes.forEac
 $('#nbrisa').innerHTML=BRISA;
 /* ================= INÍCIO ================= */
 $('#mute').onclick=e=>{muted=!muted;e.currentTarget.textContent=muted?'🔇':'🔊'};
-initDB();initTTS();updVoiceUI();
+initDB();initTTS();initAudio();updVoiceUI();
 drawProg();
 titleScreen();
 

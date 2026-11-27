@@ -11,6 +11,7 @@ NOMES = {
     "test_projeto": "🎮 Projeto (fluxo do jogo)",
     "test_interface": "📱 Interface",
     "test_narracao": "🎙️ Narração da Brisa",
+    "test_audio": "🔊 Áudios gravados (site no Render)",
 }
 DESC = {
     "test_caminho_bom_final_liberdade": "Partida só com escolhas boas → final Liberdade total, placar e barra de progresso certos",
@@ -52,6 +53,13 @@ DESC = {
     "test_conversa_da_rodinha_lida_em_ordem": "Conversa da rodinha lida em ordem (Lucas, Bia, Lucas)",
     "test_sem_voz_da_brisa_fica_so_legenda": "Sem a voz da Brisa (site próprio/celular): só legenda, nunca voz robótica",
     "test_claude_sem_tts_tambem_fica_so_legenda": "No claude.ai sem voz disponível: só legenda",
+    "test_voz_da_brisa_atrasada_nao_deixa_muda": "Se a voz da Brisa demorar a carregar, ela fala assim que chegar (não fica muda)",
+    "test_toca_audios_em_ordem_sem_voz_robotica": "Áudios gravados tocam em ordem (pergunta e opções A a D), sem voz robótica",
+    "test_para_o_audio_ao_avancar": "Ao avançar, o áudio anterior para na hora",
+    "test_fala_sem_audio_mostra_legenda_e_segue": "Fala sem áudio: mostra a legenda e segue para a próxima",
+    "test_velocidade_devagar_no_audio": "Velocidade Devagar vale também para os áudios",
+    "test_partida_inteira_no_modo_audio": "Partida completa (erros e fases extras) tocando os áudios",
+    "test_lista_de_falas_cobre_tudo_que_a_brisa_diz": "Toda fala da Brisa numa partida nova tem áudio na lista (audio/falas.json)",
 }
 
 xml = ET.parse(sys.argv[1] if len(sys.argv) > 1 else "/tmp/junit.xml").getroot()
