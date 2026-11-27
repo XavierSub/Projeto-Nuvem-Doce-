@@ -31,7 +31,7 @@ O jogo roda num **servidor pequeno** (`app.py`, Python + SQLite) que entrega o j
 
 - **dispositivos** que abriram o jogo (identificador anônimo, tipo de aparelho, acessos);
 - **ranking geral** de todos os jogadores;
-- **mensagens do Varal da Conscientização**.
+- **mensagens do Varal da Conscientização**, que aparecem para todos no **Varal da turma** dentro do jogo (no último cadeado, no final e pelo botão 📌 da tela inicial).
 
 Passo a passo:
 
@@ -88,7 +88,7 @@ Enquanto os áudios não forem gerados, a narração no Render aparece só em le
 
 ## Testes automatizados
 
-São 69 testes que jogam sozinhos num Chrome automático: fluxo do jogo (todos os finais, fases extras, talentos, erros, ranking, certificado, segurança), interface (5 tamanhos de tela), narração (o que a Brisa lê, a voz fixa e a parada ao avançar) áudios gravados (ordem, parada, velocidade e se toda fala tem áudio) servidor (banco, segurança, limites, painel e CSV) e efeitos sonoros. Veja o resultado em [`tests/RELATORIO.md`](tests/RELATORIO.md).
+São 72 testes que jogam sozinhos num Chrome automático: fluxo do jogo (todos os finais, fases extras, talentos, erros, ranking, certificado, segurança), interface (5 tamanhos de tela), narração (o que a Brisa lê, a voz fixa e a parada ao avançar) áudios gravados (ordem, parada, velocidade e se toda fala tem áudio) servidor (banco, segurança, limites, painel e CSV) e efeitos sonoros. Veja o resultado em [`tests/RELATORIO.md`](tests/RELATORIO.md).
 
 ```bash
 pip install pytest playwright pillow

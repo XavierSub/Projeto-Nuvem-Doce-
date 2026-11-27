@@ -80,6 +80,9 @@ DESC = {
     "test_sons_de_acerto_erro_e_grade": "Sons de acerto, erro e da grade abrindo",
     "test_sem_graves_que_celular_nao_toca": "Nenhum som grave demais para alto-falante de celular (partida inteira)",
     "test_botao_desliga_os_efeitos": "Botão 🔇 desliga e liga os efeitos",
+    "test_turma_inteira_na_mesma_rede": "Turma inteira no Wi-Fi da escola (35 celulares no mesmo IP) consegue enviar tudo",
+    "test_varal_publico_sem_mensagens_ocultas": "Varal da turma não mostra mensagens ocultadas nem dados do aparelho",
+    "test_varal_da_turma_aparece": "Varal da turma aparece no último cadeado, no final e na tela inicial",
     "test_painel_no_navegador": "Painel no navegador: senha, mensagens com código mostradas como texto, CSV",
 }
 

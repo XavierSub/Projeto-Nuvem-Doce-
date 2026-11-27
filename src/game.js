@@ -670,10 +670,11 @@ function varal(c){
   vt.oninput=upd;
   b.querySelectorAll('.chip').forEach(ch=>ch.onclick=()=>{sfx.tick();vt.value=ch.textContent;upd();readNow([{text:ch.textContent,el:ch}])});
   go.onclick=()=>{
-    VARAL=vt.value.trim().slice(0,120);enviarVaral(VARAL);
+    VARAL=vt.value.trim().slice(0,120);
     vt.setAttribute('readonly','');go.remove();b.querySelectorAll('.chip').forEach(x=>x.remove());
     const vl=$('#vl');vl.innerHTML=`<div class="line"></div><div class="postit"></div>`;vl.querySelector('.postit').textContent=VARAL;
     setTimeout(()=>solved(c.explain),900);
+    enviarVaral(VARAL).then(()=>{const fb=$('#fb');if(!fb)return;const w=document.createElement('div');w.id='varalTurma';w.className='wallbox';w.dataset.noread='1';fb.after(w);mostrarVaral(w)});
   };
 }
 
@@ -1046,9 +1047,40 @@ async function loadServerRanking(){
     return (j.ranking||[]).map(r=>{const e=cleanEntry({nick:r.apelido,score:r.pontos,stars:r.estrelas,time:r.tempo,ending:r.final,av:r.avatar});if(e)e.id='s'+r.id;return e}).filter(Boolean);
   }catch(e){return null}
 }
-function enviarVaral(msg){
-  if(SERVER.on)api('/api/varal',{dispositivo:deviceId(),apelido:CH.name,mensagem:msg}).catch(()=>{});
-  else if(DB){try{DB.collection('varal').add({nick:String(CH.name).slice(0,16),msg:String(msg).slice(0,120),at:Date.now()}).catch(()=>{})}catch(e){}}
+const VKEY_LOCAL='fugaVaralLocal';
+function varalLocal(){try{const a=JSON.parse(localStorage.getItem(VKEY_LOCAL)||'[]');return Array.isArray(a)?a:[]}catch(e){return []}}
+async function enviarVaral(msg){
+  try{const a=varalLocal();a.unshift({nick:String(CH.name).slice(0,16),msg:String(msg).slice(0,120),at:Date.now()});localStorage.setItem(VKEY_LOCAL,JSON.stringify(a.slice(0,40)))}catch(e){}
+  try{
+    if(SERVER.on)await api('/api/varal',{dispositivo:deviceId(),apelido:CH.name,mensagem:msg});
+    else if(DB)await Promise.race([DB.collection('varal').add({nick:String(CH.name).slice(0,16),msg:String(msg).slice(0,120),at:Date.now()}),new Promise((_,r)=>setTimeout(()=>r('timeout'),8000))]);
+    return true;
+  }catch(e){return false}
+}
+/* Mensagens do Varal de toda a turma (servidor, banco do claude.ai ou só deste aparelho) */
+async function carregarVaral(){
+  const limpa=(nick,msg)=>({nick:String(nick||'Detento').slice(0,16),msg:String(msg||'').slice(0,120)});
+  if(SERVER.on){try{const j=await api('/api/varal?limite=40');return {fonte:'turma',lista:(j.varal||[]).map(m=>limpa(m.apelido,m.mensagem)).filter(m=>m.msg)}}catch(e){}}
+  if(DB){try{const s=await Promise.race([DB.collection('varal').orderBy('at','desc').limit(40).get(),new Promise((_,r)=>setTimeout(()=>r('timeout'),8000))]);
+    return {fonte:'turma',lista:s.docs.map(d=>{const x=d.data()||{};return limpa(x.nick,x.msg)}).filter(m=>m.msg)}}catch(e){}}
+  return {fonte:'aparelho',lista:varalLocal().map(m=>limpa(m.nick,m.msg)).filter(m=>m.msg)};
+}
+async function mostrarVaral(box){
+  if(!box)return;
+  box.innerHTML='<div class="wallhead">📌 Varal da turma</div><div class="empty">Carregando mensagens… ⏳</div>';
+  const {fonte,lista}=await carregarVaral();
+  if(!box.isConnected)return;
+  box.innerHTML='';
+  const h=document.createElement('div');h.className='wallhead';h.textContent='📌 Varal da turma';box.append(h);
+  const note=document.createElement('p');note.className='muted';note.style.margin='0 0 10px';
+  note.textContent=fonte==='turma'?'Mensagens que os colegas penduraram. Toque em 🔄 para atualizar.':'Mensagens escritas neste aparelho. No site da turma (Render), aparecem as de todos.';
+  box.append(note);
+  if(!lista.length){const e=document.createElement('div');e.className='empty';e.textContent='Ainda não tem mensagens. Seja a primeira pessoa a pendurar uma! 📌';box.append(e)}
+  const w=document.createElement('div');w.className='wall';
+  lista.forEach((m,i)=>{const p=document.createElement('div');p.className='wpost';p.style.setProperty('--r',((i*37)%7-3)+'deg');
+    const t=document.createElement('div');t.textContent=m.msg;const n=document.createElement('small');n.textContent='— '+m.nick;p.append(t,n);w.append(p)});
+  box.append(w);
+  const r=document.createElement('button');r.className='btn ghost';r.textContent='🔄 Atualizar o varal';r.onclick=()=>{sfx.click();mostrarVaral(box)};box.append(r);
 }
 
 /* ================= RANKING ================= */
@@ -1116,10 +1148,12 @@ function titleScreen(){
     <div class="hello"><div class="b">${BRISA}</div><div class="t">Com a narração da <b>Brisa</b>, o espírito do ar limpo. Ligue o som! 🔊 O botão 🎙️ liga e desliga a narração.<span class="novoice-note"> Neste aparelho a Brisa aparece só em legenda: para ouvir a voz dela, abra no Chrome ou no Edge do computador, pelo claude.ai.</span></div></div>
     <button class="btn" id="new">🎮 Novo jogo</button>
     <button class="btn ghost" id="voz">🎙️ Voz da Brisa e velocidade</button>
-    <button class="btn ghost" id="rank">🏆 Ver ranking</button></div>`);
+    <button class="btn ghost" id="rank">🏆 Ver ranking</button>
+    <button class="btn ghost" id="verVaral">📌 Ver o Varal da turma</button></div>`);
   $('#new').onclick=()=>{sfx.click();creator()};
   $('#voz').onclick=()=>{sfx.click();voicePanel()};
   $('#rank').onclick=()=>{sfx.click();rankingScreen()};
+  $('#verVaral').onclick=()=>{sfx.click();renderPlain(`<div class="tag">📌 Varal da Conscientização</div><h1>Varal da turma</h1><div class="wallbox" id="wallp" data-noread="1"></div><button class="btn ghost" id="back">← Voltar</button>`);mostrarVaral($('#wallp'));$('#back').onclick=()=>{sfx.click();titleScreen()}};
 }
 
 /* ================= CRIAÇÃO DE PERSONAGEM ================= */
@@ -1212,6 +1246,7 @@ async function final(){
     <div class="stat"><div><span>${time}</span><small>TEMPO</small></div><div><span>${errors}</span><small>ALARMES</small></div><div><span>#${pos}</span><small>NESTE APARELHO</small></div></div>
     <div data-noread><h2 style="margin-top:16px">📜 Suas escolhas</h2>
     <ul class="recap">${choices.map(c=>`<li>${c.good?'✅':'⚠️'} <b>${c.ph==='Extra'?'Fase extra':'Fase '+c.ph}:</b> ${c.txt}</li>`).join('')||'<li>Nenhuma escolha registrada.</li>'}</ul>
+    <div class="wallbox" id="wallfinal"></div>
     <h2 style="margin-top:16px">🏆 Ranking</h2><div id="sub" class="muted"></div><div id="rkv"></div>
     <h2 style="margin-top:18px">🔑 As 4 chaves da liberdade</h2>
     <div class="pillars">
@@ -1236,6 +1271,7 @@ async function final(){
   if($('#prcert'))$('#prcert').onclick=()=>{sfx.click();try{window.print()}catch(e){}};if(VARAL)$('#certmsg').textContent='"'+VARAL+'"';
   $('#again').onclick=()=>{sfx.click();intro()};
   $('#newc').onclick=()=>{sfx.click();CH={name:'',s:1,h:0,hc:0,u:0,a:0,p:0};creator()};
+  mostrarVaral($('#wallfinal'));
   const sub=$('#sub');
   let gid=null;
   if(SERVER.on){

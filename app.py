@@ -122,6 +122,15 @@ def ip(request: Request):
     return (fwd.split(",")[-1].strip() or (request.client.host if request.client else "?"))[:64]
 
 
+def limitado(request, rota, dados, por_aparelho, por_rede, segundos):
+    """Limite por aparelho (id anônimo) e um teto bem maior por rede.
+    Numa escola, todos os celulares saem pelo mesmo IP, então o limite não pode ser só por IP."""
+    rede = ip(request)
+    did = dados.get("dispositivo") if isinstance(dados, dict) else None
+    did = did if isinstance(did, str) and ID_RE.match(did) else "-"
+    return excedeu((rota, "rede", rede), por_rede, segundos) or excedeu((rota, rede, did), por_aparelho, segundos)
+
+
 def texto(v, maximo):
     if not isinstance(v, str):
         return ""
@@ -176,11 +185,11 @@ async def saude(request):
 
 
 async def registrar_dispositivo(request):
-    if excedeu(("disp", ip(request)), 30, 60):
-        return erro("muitos pedidos", 429)
     d = await corpo(request)
     if not d:
         return erro("dados inválidos")
+    if limitado(request, "disp", {"dispositivo": d.get("id")}, 6, 1200, 60):
+        return erro("muitos pedidos", 429)
     did = d.get("id")
     if not isinstance(did, str) or not ID_RE.match(did):
         return erro("id inválido")
@@ -193,11 +202,11 @@ async def registrar_dispositivo(request):
 
 
 async def salvar_pontuacao(request):
-    if excedeu(("pts", ip(request)), 20, 600):
-        return erro("muitos envios, tente mais tarde", 429)
     d = await corpo(request)
     if not d:
         return erro("dados inválidos")
+    if limitado(request, "pts", d, 10, 600, 600):
+        return erro("muitos envios, tente mais tarde", 429)
     apelido = texto(d.get("apelido"), 16) or "Detento"
     pontos = inteiro(d.get("pontos"), -1000, 10000, None)
     if pontos is None:
@@ -225,11 +234,11 @@ async def ranking(request):
 
 
 async def salvar_varal(request):
-    if excedeu(("varal", ip(request)), 10, 600):
-        return erro("muitos envios, tente mais tarde", 429)
     d = await corpo(request)
     if not d:
         return erro("dados inválidos")
+    if limitado(request, "varal", d, 10, 600, 600):
+        return erro("muitos envios, tente mais tarde", 429)
     msg = texto(d.get("mensagem"), 120)
     if len(msg) < 3:
         return erro("mensagem muito curta")
@@ -237,6 +246,18 @@ async def salvar_varal(request):
     inserir("INSERT INTO varal(dispositivo, apelido, mensagem, criado_em) VALUES(?,?,?,?)",
       (disp, texto(d.get("apelido"), 16) or "Detento", msg, int(time.time())))
     return JSONResponse({"ok": True})
+
+
+async def listar_varal(request):
+    if excedeu(("varal-lista", ip(request)), 600, 60):
+        return erro("muitos pedidos", 429)
+    limite = inteiro(request.query_params.get("limite"), 1, 60, 40)
+    rows = q("SELECT apelido, mensagem, criado_em FROM varal WHERE oculta=0 ORDER BY id DESC LIMIT ?", (limite,))
+    return JSONResponse({"ok": True, "varal": [dict(r) for r in rows]}, headers={"Cache-Control": "no-store"})
+
+
+async def varal_rota(request):
+    return await (salvar_varal(request) if request.method == "POST" else listar_varal(request))
 
 
 # ------------------------------------------------------------------ painel (com senha)
@@ -354,7 +375,7 @@ routes = [
     Route("/api/dispositivo", registrar_dispositivo, methods=["POST"]),
     Route("/api/pontuacao", salvar_pontuacao, methods=["POST"]),
     Route("/api/ranking", ranking),
-    Route("/api/varal", salvar_varal, methods=["POST"]),
+    Route("/api/varal", varal_rota, methods=["GET", "POST"]),
     Route("/painel", painel),
     Route("/api/painel/dados", painel_dados),
     Route("/api/painel/ocultar", painel_ocultar, methods=["POST"]),

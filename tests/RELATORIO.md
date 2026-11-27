@@ -1,6 +1,6 @@
 # Relatório de testes · Fuga da Prisão Nuvem Doce
 
-Gerado em 27/11/2026 15:03 · **69 de 69 testes passaram**
+Gerado em 27/11/2026 15:50 · **72 de 72 testes passaram**
 
 Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clicando como uma pessoa. A voz é simulada para conferir exatamente o que a Brisa falaria e quando.
 
@@ -13,7 +13,7 @@ Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clican
 | ✅ | Fala sem áudio: mostra a legenda e segue para a próxima | 7 s |
 | ✅ | Velocidade Devagar vale também para os áudios | 2 s |
 | ✅ | Partida completa (erros e fases extras) tocando os áudios | 72 s |
-| ✅ | Toda fala da Brisa numa partida nova tem áudio na lista (audio/falas.json) | 123 s |
+| ✅ | Toda fala da Brisa numa partida nova tem áudio na lista (audio/falas.json) | 121 s |
 
 ## 📱 Interface
 
@@ -25,7 +25,7 @@ Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clican
 | ✅ | Telas principais sem rolagem lateral, sem cortes e com botões grandes o bastante [768-1024-tablet] | 4 s |
 | ✅ | Telas principais sem rolagem lateral, sem cortes e com botões grandes o bastante [1366-768-notebook] | 4 s |
 | ✅ | Partida completa num celular pequeno (320 px), conferindo que nada cobre os botões | 58 s |
-| ✅ | Partida com todas as fases extras num celular pequeno | 82 s |
+| ✅ | Partida com todas as fases extras num celular pequeno | 81 s |
 | ✅ | Balão da Brisa não cobre o botão Continuar | 5 s |
 | ✅ | Funciona com animações reduzidas (acessibilidade) | 8 s |
 | ✅ | Painel de voz e ranking cabem na tela | 1 s |
@@ -36,44 +36,45 @@ Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clican
 | Resultado | Teste | Tempo |
 |---|---|---|
 | ✅ | A Brisa lê a partida inteira sempre com a mesma voz | 47 s |
-| ✅ | Falas sem emoji, sem código e sem palavras em maiúsculas (que seriam soletradas) | 63 s |
-| ✅ | Lê a pergunta e as opções A, B, C e D em ordem | 4 s |
-| ✅ | Lê a história, o que os personagens falam e a consequência das escolhas | 6 s |
-| ✅ | Ao avançar, a fala anterior para na hora antes da próxima | 7 s |
-| ✅ | Falhas da voz: não troca de voz e não repete fala antiga | 47 s |
-| ✅ | Cliques rápidos com falhas de voz não quebram o jogo | 6 s |
+| ✅ | Falas sem emoji, sem código e sem palavras em maiúsculas (que seriam soletradas) | 61 s |
+| ✅ | Lê a pergunta e as opções A, B, C e D em ordem | 5 s |
+| ✅ | Lê a história, o que os personagens falam e a consequência das escolhas | 5 s |
+| ✅ | Ao avançar, a fala anterior para na hora antes da próxima | 6 s |
+| ✅ | Falhas da voz: não troca de voz e não repete fala antiga | 48 s |
+| ✅ | Cliques rápidos com falhas de voz não quebram o jogo | 5 s |
 | ✅ | O destaque azul acompanha o trecho lido | 5 s |
 | ✅ | Botão 🎙️ liga e desliga a narração | 6 s |
-| ✅ | Botões 'Ouvir de novo' e '🔊 Ouvir' | 5 s |
+| ✅ | Botões 'Ouvir de novo' e '🔊 Ouvir' | 6 s |
 | ✅ | Velocidade 'Devagar' é aplicada e fica salva | 3 s |
-| ✅ | Conversa da rodinha lida em ordem (Lucas, Bia, Lucas) | 39 s |
-| ✅ | Sem a voz da Brisa (site próprio/celular): só legenda, nunca voz robótica | 4 s |
-| ✅ | No claude.ai sem voz disponível: só legenda | 5 s |
+| ✅ | Conversa da rodinha lida em ordem (Lucas, Bia, Lucas) | 38 s |
+| ✅ | Sem a voz da Brisa (site próprio/celular): só legenda, nunca voz robótica | 5 s |
+| ✅ | No claude.ai sem voz disponível: só legenda | 4 s |
 | ✅ | Se a voz da Brisa demorar a carregar, ela fala assim que chegar (não fica muda) | 12 s |
-| ✅ | Celular no claude.ai (sem a voz da Brisa) toca os áudios gravados | 6 s |
+| ✅ | Celular no claude.ai (sem a voz da Brisa) toca os áudios gravados | 5 s |
 
 ## 🎮 Projeto (fluxo do jogo)
 
 | Resultado | Teste | Tempo |
 |---|---|---|
-| ✅ | Partida só com escolhas boas → final Liberdade total, placar e barra de progresso certos | 47 s |
-| ✅ | Partida só com escolhas ruins → 3 fases extras, solitária e final A corrente invisível | 70 s |
+| ✅ | Partida só com escolhas boas → final Liberdade total, placar e barra de progresso certos | 49 s |
+| ✅ | Partida só com escolhas ruins → 3 fases extras, solitária e final A corrente invisível | 71 s |
 | ✅ | Escolha ruim + contar a verdade ao enfermeiro → dependência cai e final Livre com cicatriz | 52 s |
 | ✅ | Erros em todos os tipos de desafio (múltipla escolha, cartas, scanner, cofre, ordem, mapa do corpo, iscas, conversa) | 49 s |
 | ✅ | Talento Hacker: a pista nunca elimina a resposta certa | 4 s |
-| ✅ | Talentos Atleta (120 de fôlego) e Líder (+50 nas escolhas boas) | 10 s |
-| ✅ | Rato aliado salva o jogador na corrida sem fôlego | 37 s |
-| ✅ | Minijogo de respiração na crise de fissura (inclusive soltar cedo demais) | 60 s |
-| ✅ | Jogar de novo zera pontos, medidores, cronômetro e progresso | 53 s |
-| ✅ | Nome com código malicioso aparece como texto (segurança) | 47 s |
-| ✅ | Nome vazio vira 'Detento 17' e nome longo é cortado | 3 s |
-| ✅ | Jogo funciona mesmo com o armazenamento do navegador bloqueado | 48 s |
+| ✅ | Talentos Atleta (120 de fôlego) e Líder (+50 nas escolhas boas) | 9 s |
+| ✅ | Rato aliado salva o jogador na corrida sem fôlego | 39 s |
+| ✅ | Minijogo de respiração na crise de fissura (inclusive soltar cedo demais) | 59 s |
+| ✅ | Jogar de novo zera pontos, medidores, cronômetro e progresso | 55 s |
+| ✅ | Nome com código malicioso aparece como texto (segurança) | 49 s |
+| ✅ | Nome vazio vira 'Detento 17' e nome longo é cortado | 4 s |
+| ✅ | Jogo funciona mesmo com o armazenamento do navegador bloqueado | 47 s |
 | ✅ | Ranking do aparelho guarda e ordena as partidas | 96 s |
-| ✅ | Ranking geral (claude.ai): envia a pontuação e ignora dados inválidos | 47 s |
-| ✅ | Certificado baixa como PNG 1600×1130 com nome de arquivo sem acento | 46 s |
-| ✅ | Certificado no claude.ai usa o salvamento da plataforma | 46 s |
+| ✅ | Ranking geral (claude.ai): envia a pontuação e ignora dados inválidos | 46 s |
+| ✅ | Certificado baixa como PNG 1600×1130 com nome de arquivo sem acento | 49 s |
+| ✅ | Certificado no claude.ai usa o salvamento da plataforma | 49 s |
 | ✅ | Tocar na transição pula a animação | 4 s |
-| ✅ | Teste 'macaco': 600 toques aleatórios e rápidos sem nenhum erro | 38 s |
+| ✅ | Teste 'macaco': 600 toques aleatórios e rápidos sem nenhum erro | 40 s |
+| ✅ | Varal da turma aparece no último cadeado, no final e na tela inicial | 49 s |
 
 ## 🗄️ Servidor e banco de dados
 
@@ -90,17 +91,19 @@ Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clican
 | ✅ | Painel e dados exigem a senha | 1 s |
 | ✅ | Painel oculta mensagens e apaga pontuações | 0 s |
 | ✅ | CSV abre no Excel com acentos e neutraliza fórmulas perigosas | 0 s |
-| ✅ | Partida completa pelo servidor: aparelho, pontuação, Varal e ranking geral | 47 s |
+| ✅ | Partida completa pelo servidor: aparelho, pontuação, Varal e ranking geral | 49 s |
 | ✅ | Painel no navegador: senha, mensagens com código mostradas como texto, CSV | 1 s |
+| ✅ | Turma inteira no Wi-Fi da escola (35 celulares no mesmo IP) consegue enviar tudo | 0 s |
+| ✅ | Varal da turma não mostra mensagens ocultadas nem dados do aparelho | 0 s |
 
 ## 🔔 Efeitos sonoros
 
 | Resultado | Teste | Tempo |
 |---|---|---|
-| ✅ | O som é liberado no primeiro toque (regra dos navegadores) | 2 s |
+| ✅ | O som é liberado no primeiro toque (regra dos navegadores) | 1 s |
 | ✅ | Se o celular pausar o som, um toque destrava de novo | 2 s |
 | ✅ | Sons de acerto, erro e da grade abrindo | 14 s |
-| ✅ | Nenhum som grave demais para alto-falante de celular (partida inteira) | 71 s |
+| ✅ | Nenhum som grave demais para alto-falante de celular (partida inteira) | 72 s |
 | ✅ | Botão 🔇 desliga e liga os efeitos | 5 s |
 
 ## Como rodar de novo

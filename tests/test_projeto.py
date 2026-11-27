@@ -307,3 +307,27 @@ def test_toques_aleatorios_rapidos(make_game):
             g.p.wait_for_timeout(rnd.choice([0, 10, 40, 120]))
         g.p.wait_for_timeout(1500)
         assert not g.errors, f"semente {seed}: {g.errors}"
+
+
+def test_varal_da_turma_aparece(make_game):
+    """Depois de pendurar a mensagem, o Varal aparece no jogo, no final e na tela inicial."""
+    g = make_game()
+    g.start("Varal")
+    g.phase1(); g.np(); g.phase2(); g.np(); g.phase3(); g.np(); g.phase4(); g.np()
+    g.p.click("#run"); g.p.wait_for_selector("#nx", timeout=8000); g.nx()
+    g.p.wait_for_selector("#q .opt", timeout=15000); g.p.click('#q .opt[data-i="1"]')
+    g.p.wait_for_selector('#q .opt[data-i="2"]', timeout=15000); g.p.click('#q .opt[data-i="2"]'); g.nx()
+    g.p.click('.opt[data-i="1"]'); g.nx()
+    g.p.fill("#vt", "Seu pulmão não é descartável")
+    g.p.click("#go")
+    g.p.wait_for_selector("#varalTurma .wpost", timeout=8000)
+    assert "Seu pulmão não é descartável" in g.p.inner_text("#varalTurma")
+    g.p.locator("#varalTurma").scroll_into_view_if_needed()
+    g.p.screenshot(path=str(SHOTS / "varal_da_turma.png"))
+    g.nx(); g.to_final()
+    g.p.wait_for_selector("#wallfinal .wpost", timeout=8000)
+    assert "Seu pulmão não é descartável" in g.p.inner_text("#wallfinal")
+    g.p.goto(GAME); g.p.click("#verVaral")
+    g.p.wait_for_selector("#wallp .wpost", timeout=8000)
+    assert "Seu pulmão não é descartável" in g.p.inner_text("#wallp")
+    assert not g.errors, g.errors

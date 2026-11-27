@@ -186,6 +186,10 @@ def test_jogo_completo_ligado_ao_servidor(servidor, make_game):
     assert appmod.q("SELECT COUNT(*) n FROM pontuacoes", one=True)["n"] == antes + 1
     assert appmod.q("SELECT mensagem FROM varal ORDER BY id DESC LIMIT 1", one=True)["mensagem"] == "Meu não é minha escolha"
     assert g.p.query_selector("#rk .rr.me"), "a própria pontuação deve aparecer destacada no ranking geral"
+    g.p.wait_for_selector("#wallfinal .wpost", timeout=8000)
+    posts = g.p.eval_on_selector_all("#wallfinal .wpost div", "e=>e.map(x=>x.innerText)")
+    assert "Meu não é minha escolha" in posts, "a mensagem deve aparecer no Varal da turma"
+    assert len(posts) > 1, "o Varal da turma mostra as mensagens dos colegas também"
     assert not g.errors, g.errors
 
 
@@ -206,3 +210,30 @@ def test_painel_no_navegador(servidor, make_game):
     assert d.value.suggested_filename == "varal.csv"
     g.p.screenshot(path=str(ROOT / "tests" / "capturas" / "painel_professor.png"), full_page=True)
     assert not [e for e in g.errors if "401" not in e], g.errors
+
+
+def test_turma_inteira_na_mesma_rede(servidor):
+    """Escola: 35 celulares saindo pelo mesmo IP conseguem enviar Varal e pontuação."""
+    base, _ = servidor
+    rede = "200.1.2.3"
+    for i in range(35):
+        did = f"dturma{i:04d}"
+        assert chamar(base, "/api/dispositivo", {"id": did, "plataforma": "celular"}, ip=rede)[0] == 200
+        assert chamar(base, "/api/varal", {"dispositivo": did, "apelido": f"Aluno{i}", "mensagem": f"Mensagem do aluno {i}"}, ip=rede)[0] == 200
+        assert chamar(base, "/api/pontuacao", {"dispositivo": did, "apelido": f"Aluno{i}", "pontos": 1000 + i, "estrelas": 3,
+                                                "tempo": "9:00", "final": "livre"}, ip=rede)[0] == 200, f"aluno {i} bloqueado"
+    # um aparelho sozinho mandando demais continua bloqueado
+    codes = [chamar(base, "/api/varal", {"dispositivo": "dspam00001", "mensagem": f"spam {i}"}, ip=rede)[0] for i in range(13)]
+    assert 429 in codes
+
+
+def test_varal_publico_sem_mensagens_ocultas(servidor):
+    base, appmod = servidor
+    chamar(base, "/api/varal", {"dispositivo": "dpub000001", "apelido": "Pub", "mensagem": "mensagem que vai ser oculta"}, ip="10.1.1.1")
+    mid = appmod.q("SELECT id FROM varal ORDER BY id DESC LIMIT 1", one=True)["id"]
+    st, j = chamar(base, "/api/varal")
+    assert st == 200 and any(m["mensagem"] == "mensagem que vai ser oculta" for m in j["varal"])
+    chamar(base, "/api/painel/ocultar", {"id": mid, "oculta": True}, headers=PAINEL)
+    st, j = chamar(base, "/api/varal")
+    assert not any(m["mensagem"] == "mensagem que vai ser oculta" for m in j["varal"]), "mensagem oculta não pode aparecer no varal da turma"
+    assert set(j["varal"][0]) == {"apelido", "mensagem", "criado_em"}, "o varal público não mostra dados do aparelho"
