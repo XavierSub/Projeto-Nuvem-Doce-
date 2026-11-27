@@ -13,6 +13,7 @@ NOMES = {
     "test_narracao": "🎙️ Narração da Brisa",
     "test_audio": "🔊 Áudios gravados (site no Render)",
     "test_servidor": "🗄️ Servidor e banco de dados",
+    "test_sons": "🔔 Efeitos sonoros",
 }
 DESC = {
     "test_caminho_bom_final_liberdade": "Partida só com escolhas boas → final Liberdade total, placar e barra de progresso certos",
@@ -74,6 +75,11 @@ DESC = {
     "test_painel_oculta_e_apaga": "Painel oculta mensagens e apaga pontuações",
     "test_csv_abre_no_excel_e_protege_formulas": "CSV abre no Excel com acentos e neutraliza fórmulas perigosas",
     "test_jogo_completo_ligado_ao_servidor": "Partida completa pelo servidor: aparelho, pontuação, Varal e ranking geral",
+    "test_audio_liberado_no_primeiro_toque": "O som é liberado no primeiro toque (regra dos navegadores)",
+    "test_audio_volta_se_o_celular_pausar": "Se o celular pausar o som, um toque destrava de novo",
+    "test_sons_de_acerto_erro_e_grade": "Sons de acerto, erro e da grade abrindo",
+    "test_sem_graves_que_celular_nao_toca": "Nenhum som grave demais para alto-falante de celular (partida inteira)",
+    "test_botao_desliga_os_efeitos": "Botão 🔇 desliga e liga os efeitos",
     "test_painel_no_navegador": "Painel no navegador: senha, mensagens com código mostradas como texto, CSV",
 }
 

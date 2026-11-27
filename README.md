@@ -88,7 +88,7 @@ Enquanto os áudios não forem gerados, a narração no Render aparece só em le
 
 ## Testes automatizados
 
-São 64 testes que jogam sozinhos num Chrome automático: fluxo do jogo (todos os finais, fases extras, talentos, erros, ranking, certificado, segurança), interface (5 tamanhos de tela), narração (o que a Brisa lê, a voz fixa e a parada ao avançar) áudios gravados (ordem, parada, velocidade e se toda fala tem áudio) e servidor (banco, segurança, limites, painel e CSV). Veja o resultado em [`tests/RELATORIO.md`](tests/RELATORIO.md).
+São 69 testes que jogam sozinhos num Chrome automático: fluxo do jogo (todos os finais, fases extras, talentos, erros, ranking, certificado, segurança), interface (5 tamanhos de tela), narração (o que a Brisa lê, a voz fixa e a parada ao avançar) áudios gravados (ordem, parada, velocidade e se toda fala tem áudio) servidor (banco, segurança, limites, painel e CSV) e efeitos sonoros. Veja o resultado em [`tests/RELATORIO.md`](tests/RELATORIO.md).
 
 ```bash
 pip install pytest playwright pillow

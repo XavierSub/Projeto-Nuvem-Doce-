@@ -1,6 +1,6 @@
 # Relatório de testes · Fuga da Prisão Nuvem Doce
 
-Gerado em 27/11/2026 14:52 · **64 de 64 testes passaram**
+Gerado em 27/11/2026 15:03 · **69 de 69 testes passaram**
 
 Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clicando como uma pessoa. A voz é simulada para conferir exatamente o que a Brisa falaria e quando.
 
@@ -39,7 +39,7 @@ Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clican
 | ✅ | Falas sem emoji, sem código e sem palavras em maiúsculas (que seriam soletradas) | 63 s |
 | ✅ | Lê a pergunta e as opções A, B, C e D em ordem | 4 s |
 | ✅ | Lê a história, o que os personagens falam e a consequência das escolhas | 6 s |
-| ✅ | Ao avançar, a fala anterior para na hora antes da próxima | 6 s |
+| ✅ | Ao avançar, a fala anterior para na hora antes da próxima | 7 s |
 | ✅ | Falhas da voz: não troca de voz e não repete fala antiga | 47 s |
 | ✅ | Cliques rápidos com falhas de voz não quebram o jogo | 6 s |
 | ✅ | O destaque azul acompanha o trecho lido | 5 s |
@@ -56,7 +56,7 @@ Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clican
 
 | Resultado | Teste | Tempo |
 |---|---|---|
-| ✅ | Partida só com escolhas boas → final Liberdade total, placar e barra de progresso certos | 46 s |
+| ✅ | Partida só com escolhas boas → final Liberdade total, placar e barra de progresso certos | 47 s |
 | ✅ | Partida só com escolhas ruins → 3 fases extras, solitária e final A corrente invisível | 70 s |
 | ✅ | Escolha ruim + contar a verdade ao enfermeiro → dependência cai e final Livre com cicatriz | 52 s |
 | ✅ | Erros em todos os tipos de desafio (múltipla escolha, cartas, scanner, cofre, ordem, mapa do corpo, iscas, conversa) | 49 s |
@@ -73,7 +73,7 @@ Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clican
 | ✅ | Certificado baixa como PNG 1600×1130 com nome de arquivo sem acento | 46 s |
 | ✅ | Certificado no claude.ai usa o salvamento da plataforma | 46 s |
 | ✅ | Tocar na transição pula a animação | 4 s |
-| ✅ | Teste 'macaco': 600 toques aleatórios e rápidos sem nenhum erro | 39 s |
+| ✅ | Teste 'macaco': 600 toques aleatórios e rápidos sem nenhum erro | 38 s |
 
 ## 🗄️ Servidor e banco de dados
 
@@ -90,8 +90,18 @@ Os testes abrem o jogo num navegador Chrome automático e jogam sozinhos, clican
 | ✅ | Painel e dados exigem a senha | 1 s |
 | ✅ | Painel oculta mensagens e apaga pontuações | 0 s |
 | ✅ | CSV abre no Excel com acentos e neutraliza fórmulas perigosas | 0 s |
-| ✅ | Partida completa pelo servidor: aparelho, pontuação, Varal e ranking geral | 48 s |
+| ✅ | Partida completa pelo servidor: aparelho, pontuação, Varal e ranking geral | 47 s |
 | ✅ | Painel no navegador: senha, mensagens com código mostradas como texto, CSV | 1 s |
+
+## 🔔 Efeitos sonoros
+
+| Resultado | Teste | Tempo |
+|---|---|---|
+| ✅ | O som é liberado no primeiro toque (regra dos navegadores) | 2 s |
+| ✅ | Se o celular pausar o som, um toque destrava de novo | 2 s |
+| ✅ | Sons de acerto, erro e da grade abrindo | 14 s |
+| ✅ | Nenhum som grave demais para alto-falante de celular (partida inteira) | 71 s |
+| ✅ | Botão 🔇 desliga e liga os efeitos | 5 s |
 
 ## Como rodar de novo
 

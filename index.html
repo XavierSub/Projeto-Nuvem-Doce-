@@ -557,28 +557,63 @@
 <div class="narr" id="narr" aria-live="polite"><div class="brisa" id="nbrisa"></div><div class="nb"><small>BRISA · NARRADORA</small><span id="ntext"></span><div class="ctl"><button id="nclose" aria-label="Fechar">✕</button><button id="nset" aria-label="Escolher voz">⚙️</button><button id="nstop" class="hidden" aria-label="Parar a voz">⏹</button></div></div></div>
 <script>
 /* ================= SOM ================= */
-let AC=null,muted=false;
+/* Efeitos sonoros sintetizados (Web Audio). Pensados para alto-falante de celular:
+   frequências médias/agudas (o celular não reproduz graves), volume reforçado
+   e destravamento do áudio a cada toque (os navegadores começam com o som pausado). */
+let AC=null,MASTER=null,NOISE=null,muted=false;
+function ctx(){
+  if(!AC){
+    const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;
+    try{
+      AC=new C();
+      const comp=AC.createDynamicsCompressor();comp.threshold.value=-14;comp.ratio.value=6;
+      MASTER=AC.createGain();MASTER.gain.value=1.6;MASTER.connect(comp);comp.connect(AC.destination);
+      const n=AC.createBuffer(1,AC.sampleRate,AC.sampleRate),d=n.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;NOISE=n;
+    }catch(e){AC=null;return null}
+  }
+  if(AC.state!=='running'){try{AC.resume()}catch(e){}}
+  return AC;
+}
+function unlockAudio(){
+  const c=ctx();if(!c)return;
+  try{const s=c.createBufferSource();s.buffer=c.createBuffer(1,1,22050);s.connect(c.destination);s.start(0)}catch(e){}
+}
+['pointerdown','touchend','keydown','click'].forEach(ev=>document.addEventListener(ev,unlockAudio,{capture:true,passive:true}));
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&AC&&AC.state!=='running'){try{AC.resume()}catch(e){}}});
+try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}   /* iPhone: toca mesmo com a chave do silencioso */
 function tone(f,d,type='sine',v=.15,when=0,slide){
   if(muted)return;
+  const c=ctx();if(!c)return;
   try{
-    AC=AC||new (window.AudioContext||window.webkitAudioContext)();
-    const t=AC.currentTime+when,o=AC.createOscillator(),g=AC.createGain();
+    const t=c.currentTime+when+.01,o=c.createOscillator(),g=c.createGain();
     o.type=type;o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(slide,t+d);
-    g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);
-    o.connect(g).connect(AC.destination);o.start(t);o.stop(t+d+.02);
+    g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+d);
+    o.connect(g);g.connect(MASTER);o.start(t);o.stop(t+d+.03);
+  }catch(e){}
+}
+function noise(d,v=.3,when=0,freq=2000,q=1.2){
+  if(muted)return;
+  const c=ctx();if(!c||!NOISE)return;
+  try{
+    const t=c.currentTime+when+.01,s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();
+    s.buffer=NOISE;f.type='bandpass';f.frequency.value=freq;f.Q.value=q;
+    g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);
+    s.connect(f);f.connect(g);g.connect(MASTER);s.start(t,Math.random()*.5);s.stop(t+d+.03);
   }catch(e){}
 }
 const sfx={
-  click:()=>tone(1400,.04,'square',.035),
-  ok:()=>{tone(660,.12,'triangle',.16);tone(990,.22,'triangle',.16,.1)},
-  bad:()=>{tone(180,.4,'sawtooth',.1,0,90);tone(120,.4,'square',.05,.04)},
-  clank:()=>{tone(110,.5,'square',.18,0,50);tone(70,.7,'sawtooth',.12,.04);tone(2200,.06,'square',.05,.02);tone(1700,.06,'square',.04,.12)},
-  alarm:()=>[0,.3,.6].forEach(t=>tone(700,.25,'sawtooth',.05,t,1100)),
-  win:()=>[523,659,784,1047,1319].forEach((f,i)=>tone(f,.3,'triangle',.12,i*.12)),
-  tick:()=>tone(2400,.02,'square',.03),
-  dark:()=>{tone(220,.6,'sawtooth',.08,0,110);tone(165,.8,'sine',.1,.1,80)},
-  cough:()=>[0,.22,.4].forEach(t=>tone(160,.12,'sawtooth',.09,t,90)),
-  run:()=>{for(let i=0;i<9;i++)tone(300+(i%2)*80,.05,'square',.03,i*.22)}
+  click:()=>tone(1800,.05,'square',.07),
+  ok:()=>{tone(880,.13,'triangle',.3);tone(1320,.22,'triangle',.3,.09);tone(1760,.25,'sine',.12,.16)},
+  bad:()=>{tone(440,.28,'sawtooth',.16,0,220);tone(466,.28,'square',.08,.02,233)},
+  clank:()=>{noise(.35,.7,0,2600,2);tone(330,.35,'square',.18,0,165);tone(1250,.1,'square',.1,.03);noise(.15,.5,.12,4000,3)},
+  alarm:()=>[0,.3,.6].forEach(t=>tone(700,.25,'sawtooth',.12,t,1200)),
+  win:()=>[523,659,784,1047,1319].forEach((f,i)=>{tone(f,.3,'triangle',.22,i*.12);tone(f*2,.2,'sine',.06,i*.12)}),
+  tick:()=>tone(2600,.03,'square',.06),
+  dark:()=>{tone(330,.6,'sawtooth',.14,0,165);tone(392,.8,'triangle',.16,.1,196)},
+  cough:()=>[0,.22,.42].forEach(t=>{noise(.14,.6,t,900,1.5);tone(300,.12,'sawtooth',.08,t,220)}),
+  run:()=>{for(let i=0;i<9;i++){noise(.04,.35,i*.22,1500,2);tone(600+(i%2)*120,.05,'square',.06,i*.22)}},
+  slam:()=>{noise(.45,.8,0,1800,1.5);tone(260,.45,'square',.2,0,130);tone(900,.12,'square',.08,.02)},
+  pop:()=>{noise(.3,.35,0,3000,1);tone(500+Math.random()*300,.25,'triangle',.08,0,200)}
 };
 
 /* ================= UTIL ================= */
@@ -1076,7 +1111,7 @@ function solitary(cb){
 function transition(label,title,sub,cb,extra){
   sfx.alarm();
   const d=document.createElement('div');d.className='tr'+(extra?' extra':'');
-  d.className+=' shakeit';setTimeout(()=>{tone(90,.35,'square',.18,0,45);tone(60,.5,'sawtooth',.1,.03)},360);
+  d.className+=' shakeit';setTimeout(()=>sfx.slam(),360);
   d.innerHTML=`<div class="dl"></div><div class="dr"></div><div class="slam"></div><div class="sweep"></div><div class="strip s1"></div><div class="strip s2"></div>
     <div class="box"><div class="n">${label}</div><div class="t">${title}</div><div class="sub">${sub}</div></div><div class="skip">toque para pular</div>`;
   document.body.appendChild(d);
@@ -1796,7 +1831,7 @@ function showCombo(n){
   const d=document.createElement('div');d.className='combo';
   d.innerHTML=`<span class="fire">🔥</span><b>COMBO x${n}</b><small>+${(n-1)*20} PONTOS EXTRAS</small>`;
   document.body.appendChild(d);setTimeout(()=>d.remove(),1900);
-  tone(880,.08,'square',.05);tone(1320,.12,'square',.05,.08);tone(1760,.18,'triangle',.06,.16);
+  tone(880,.08,'square',.12);tone(1320,.12,'square',.12,.08);tone(1760,.2,'triangle',.16,.16);
 }
 function glitch(){const sc=$('#sc');if(!sc)return;sc.classList.remove('glitch');void sc.offsetWidth;sc.classList.add('glitch');setTimeout(()=>sc.classList.remove('glitch'),550)}
 function dustHTML(){return `<div class="dust">${Array.from({length:14},()=>`<i style="left:${Math.random()*100}%;--sx:${Math.random()*40-20}px;animation-duration:${6+Math.random()*7}s;animation-delay:${-Math.random()*10}s;width:${2+Math.random()*3}px;height:${2+Math.random()*3}px"></i>`).join('')}</div>`}
@@ -1809,7 +1844,7 @@ function fireworks(ms=4500){
   function boom(){
     const bx=40+Math.random()*(innerWidth-80),by=80+Math.random()*innerHeight*.4,col=cols[Math.floor(Math.random()*cols.length)];
     for(let i=0;i<46;i++){const a=Math.PI*2*i/46,v=1.5+Math.random()*3.2;P.push({x:bx,y:by,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:1,c:col})}
-    tone(140+Math.random()*60,.25,'sawtooth',.04,0,60);
+    sfx.pop();
   }
   (function f(now){
     const el=now-t0;
