@@ -103,14 +103,14 @@ const SCENES={
     <rect y="158" width="360" height="42" fill="#1e2024"/><path d="M0 158H360" stroke="#000" stroke-width="2"/>
     <rect x="150" y="18" width="62" height="40" fill="#0b1830" stroke="#222" stroke-width="3"/><circle cx="196" cy="32" r="7" fill="#f1f0d0"/>
     ${[162,174,186,198].map(x=>`<rect x="${x}" y="18" width="3" height="40" fill="#555"/>`).join('')}
-    <rect x="252" y="40" width="58" height="22" rx="2" fill="#f5c518"/><text x="281" y="55" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" text-anchor="middle" fill="#111">CELA 17</text>
+    
     <rect x="18" y="128" width="120" height="8" fill="#5b4330"/><rect x="22" y="118" width="112" height="11" rx="3" fill="#8193a8"/><rect x="24" y="112" width="26" height="9" rx="4" fill="#dfe6ee"/>
     <rect x="22" y="136" width="5" height="24" fill="#3b2c20"/><rect x="129" y="136" width="5" height="24" fill="#3b2c20"/>
     <rect x="86" y="108" width="9" height="12" rx="2" fill="#2a2a2e"/><rect class="podglow" x="88" y="110" width="5" height="3" rx="1" fill="#7cf9ff"/>
     <rect x="70" y="122" width="18" height="12" fill="#e9e2cf" transform="rotate(-8 79 128)"/>
     <path d="M285 158v-18a12 8 0 0 1 24 0v18z" fill="#c9cfd6"/><rect x="290" y="126" width="14" height="14" rx="2" fill="#aab2bb"/>
     ${RAT}${ME(150,98,.78)}
-    ${FOG}${ALARM}${BARS()}${GUARD(14)}</svg>`,
+    ${FOG}${ALARM}${BARS()}${GUARD(14)}<g transform="rotate(-4 281 50)"><path d="M262 36 L281 26 L300 36" stroke="#333" stroke-width="1.5" fill="none"/><rect x="252" y="38" width="58" height="22" rx="2" fill="#f5c518" stroke="#8a6d00"/><text x="281" y="53" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" text-anchor="middle" fill="#111">CELA 17</text></g></svg>`,
   cofre:()=>`<svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid slice">${DEFS}
     <rect width="360" height="200" fill="#2a3530"/><rect width="360" height="200" fill="url(#bricks)" opacity=".5"/>
     <rect y="160" width="360" height="40" fill="#1a1d1b"/>
@@ -526,8 +526,9 @@ function transition(label,title,sub,cb,extra){
   d.onclick=end;setTimeout(end,2400);
 }
 function typeText(el,text,speed=22){
+  if(!el||!el.isConnected)return;
   let i=0;el.classList.add('type');
-  const iv=setInterval(()=>{el.textContent=text.slice(0,++i);if(i%3===0)sfx.tick();if(i>=text.length){clearInterval(iv);el.classList.add('done')}},speed);
+  const iv=setInterval(()=>{if(!el.isConnected){clearInterval(iv);return}el.textContent=text.slice(0,++i);if(i%3===0)sfx.tick();if(i>=text.length){clearInterval(iv);el.classList.add('done')}},speed);
   el.onclick=()=>{clearInterval(iv);el.textContent=text;el.classList.add('done')};
 }
 
@@ -1027,7 +1028,7 @@ function titleScreen(){
   setBody(`<div class="titlecard"><div class="badge">🚨 ESCAPE ROOM · PREVENÇÃO AO VAPE</div>
     <h1>Fuga da Prisão<br>Nuvem Doce</h1>
     <p class="muted">Crie seu detento, atravesse 5 fases e cuidado com as escolhas: as ruins abrem fases extras de consequência.</p>
-    <div class="hello"><div class="b">${BRISA}</div><div class="t">Com a narração da <b>Brisa</b>, o espírito do ar limpo. Ligue o som! 🔊 O botão 🎙️ liga e desliga a narração.</div></div>
+    <div class="hello"><div class="b">${BRISA}</div><div class="t">Com a narração da <b>Brisa</b>, o espírito do ar limpo. Ligue o som! 🔊 O botão 🎙️ liga e desliga a narração.<span class="novoice-note"> Neste aparelho a Brisa aparece só em legenda: para ouvir a voz dela, abra no Chrome ou no Edge do computador, pelo claude.ai.</span></div></div>
     <button class="btn" id="new">🎮 Novo jogo</button>
     <button class="btn ghost" id="voz">🎙️ Voz da Brisa e velocidade</button>
     <button class="btn ghost" id="rank">🏆 Ver ranking</button></div>`);
@@ -1073,7 +1074,7 @@ function intro(){
   renderScene('cela','BLOCO N · CELA 17 · 03:14',0);
   setBody(`<div class="tag">🚨 Alerta de fuga · 5 fases · 15 cadeados · ~10 min</div>
     <h2>${esc(CH.name)}, acorde.</h2>
-    <div class="story">Você acorda numa cela fria. O ar tem cheiro de <b>melancia gelada</b>, e no colchão há um pod piscando. Na outra cama, um detento magrelo te observa. O alto-falante chia:<br><br><i id="voice"></i></div>
+    <div class="story">Você acorda numa cela fria. O ar tem cheiro de <b>melancia gelada</b>, e no colchão há um pod piscando. Na outra cama, um colega de cela te observa. O alto-falante chia:<br><br><i id="voice"></i></div>
     <p>Você não é culpado de nada: essa prisão foi <b>projetada</b> para prender. Atravesse as 5 fases (cela, cofre, raio-X, pátio e portão) e saia antes do amanhecer. Escolhas ruins abrem <b>fases extras</b>.</p>
     <div class="breakdown">
       <div><span>🫁 Fôlego</span><span>sua saúde respiratória</span></div>
@@ -1246,7 +1247,7 @@ async function certPNG(info){
 }
 async function saveCert(info){
   const blob=await certPNG(info);if(!blob){toast('Não deu para gerar a imagem.');return}
-  const fname='certificado-nuvem-doce-'+(info.name.normalize('NFD').replace(/[^\w]+/g,'-').replace(/^-|-$/g,'').toLowerCase()||'detento')+'.png';
+  const fname='certificado-nuvem-doce-'+(info.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^\w]+/g,'-').replace(/^-|-$/g,'').toLowerCase()||'detento')+'.png';
   let dl=null;
   try{if(window.claude&&typeof window.claude.use==='function')dl=await window.claude.use('downloads')}catch(e){}
   if(dl){
@@ -1291,10 +1292,10 @@ function saveVPref(){try{localStorage.setItem(VKEY,JSON.stringify(VPREF))}catch(
 function engine(){
   if(NARR.lock)return NARR.lock;
   if(!NARR.ttsReady)return null;
-  NARR.lock=NARR.tts?'claude':(NARR.web?'web':'none');
+  NARR.lock=NARR.tts?'claude':'none';
   return NARR.lock;
 }
-const voiceAvail=()=>NARR.web||!!NARR.tts;
+const voiceAvail=()=>!!NARR.tts;
 function updVoiceUI(){document.body.classList.toggle('novoice',!voiceAvail())}
 
 /* Voz do aparelho: prefere vozes neurais ("Natural", "Online", Google) em pt-BR */
@@ -1392,7 +1393,7 @@ function voicePanel(){
   const old=$('#vpanel');if(old)old.remove();
   const d=document.createElement('div');d.id='vpanel';d.className='vpanel';
   d.innerHTML=`<div class="vbox"><div class="tag">🎙️ Voz da narração</div><h2>A voz da Brisa</h2>
-    <div class="hello" style="justify-content:flex-start"><div class="b">${BRISA}</div><div class="t">${NARR.tts?'Voz natural e tranquila da Brisa.':'Neste aparelho a voz natural da Brisa não está disponível, então o jogo usa a voz do próprio aparelho. Para ouvir a Brisa, abra no Chrome ou no Edge do computador, pelo claude.ai.'}</div></div>
+    <div class="hello" style="justify-content:flex-start"><div class="b">${BRISA}</div><div class="t">${NARR.tts?'Voz natural e tranquila da Brisa.':'Neste aparelho a voz da Brisa não está disponível, então a narração aparece só em legenda. Para ouvir a Brisa, abra o jogo no Chrome ou no Edge do computador, pelo claude.ai.'}</div></div>
     <div class="row"><div class="lbl">Velocidade</div><div class="sw tx" id="vrate">${[[1,'Normal'],[.85,'🐢 Devagar']].map(([r,n])=>`<button data-r="${r}" class="${Math.abs(VPREF.rate-r)<.01?'on':''}">${n}</button>`).join('')}</div></div>
     <button class="btn" id="vtest">▶️ Ouvir um teste</button><button class="btn ghost" id="vclose">Pronto</button></div>`;
   document.body.appendChild(d);
@@ -1429,8 +1430,12 @@ function itemsFrom(root){
 }
 function readScreen(){queue([{lazy:()=>itemsFrom($('#body'))}],1)}
 function readEl(el,pri=1){queue(itemsFrom(el).length?itemsFrom(el):[{text:el.innerText,el}],pri)}
-function readNow(items){if(engine()!=='web'){const t=Date.now();if(t-NARR.lastMicro<2500)return;NARR.lastMicro=t}speakItems(items,false)}
+function readNow(items){const t=Date.now();if(t-NARR.lastMicro<2500)return;NARR.lastMicro=t;speakItems(items,false)}
 
+document.addEventListener('click',e=>{
+  const adv=e.target.closest&&e.target.closest('button,.seg');
+  if(adv&&!adv.closest('.narr,.vpanel')&&!adv.matches('.relisten,.listen,#narrbtn,#mute,.chip'))stopVoice();
+},true);
 document.addEventListener('click',e=>{
   const b=e.target.closest&&e.target.closest('.listen,.relisten');if(!b)return;
   if(b.classList.contains('relisten')){stopVoice();readScreen();return}

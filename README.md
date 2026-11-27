@@ -39,10 +39,21 @@ Outra opção é ir em **New → Static Site**, escolher o repositório, deixar 
 
 | Recurso | Render (site próprio) | Página no claude.ai |
 |---|---|---|
-| Voz da narração | Voz do aparelho (Google no Chrome/Android) | Voz natural da Brisa (Chrome/Edge do computador) |
+| Voz da narração | Só legenda (a voz da Brisa não existe fora do claude.ai) | Voz natural da Brisa (Chrome/Edge do computador) |
 | Ranking | Só do aparelho | Do aparelho + geral compartilhado |
 | Certificado | Baixar PNG e imprimir | Baixar PNG |
 | Login | Não precisa | Precisa estar logado no claude.ai |
+
+## Testes automatizados
+
+São 43 testes que jogam sozinhos num Chrome automático: fluxo do jogo (todos os finais, fases extras, talentos, erros, ranking, certificado, segurança), interface (5 tamanhos de tela) e narração (o que a Brisa lê, a voz fixa e a parada ao avançar). Veja o resultado em [`tests/RELATORIO.md`](tests/RELATORIO.md).
+
+```bash
+pip install pytest playwright pillow
+python3 -m playwright install chromium
+python3 -m pytest tests -v --junitxml=/tmp/junit.xml
+python3 tests/relatorio.py /tmp/junit.xml
+```
 
 ## Editar o jogo
 

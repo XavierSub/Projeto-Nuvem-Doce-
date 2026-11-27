@@ -33,3 +33,9 @@
   .vopt small{display:block;font-weight:500;font-size:11.5px;color:var(--muted)}
   .vopt.on{border-color:var(--cyan);background:rgba(92,225,255,.12)}
   .narr .nb{padding-right:34px;min-height:76px}
+
+  html{scroll-padding:72px 0 160px}
+  .narr .nb{pointer-events:none}
+  .narr .nb .ctl{pointer-events:auto}
+  .novoice-note{display:none}
+  body.novoice .novoice-note{display:inline}
