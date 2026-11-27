@@ -34,7 +34,7 @@ window.SpeechSynthesisUtterance=function(t){this.text=t};})();
 """
 
 # Simulação do ambiente claude.ai: voz natural (tts), banco (db) e downloads
-def claude_mock(tts=True, db=True, downloads=True, fail_every=0, db_rows=None):
+def claude_mock(tts=True, db=True, downloads=True, fail_every=0, db_rows=None, tts_delay=0):
     return """
 window.__tts=[];window.__dbAdds=[];window.__saves=[];
 (function(){
@@ -53,10 +53,10 @@ const db={collection(p){const q={orderBy(){return q},limit(){return q},
     add(d){window.__dbAdds.push({path:p,doc:d});return Promise.resolve({id:'novo1'})}};return q}};
 const dl={save(r){window.__saves.push({filename:r.filename,size:r.data&&r.data.size,type:r.data&&r.data.type});return Promise.resolve({status:'saved'})}};
 const map={tts:%s,db:%s,downloads:%s};
-window.claude={use:name=>Promise.resolve(map[name]||null)};
+window.claude={use:name=>name==='tts'&&%d?new Promise(r=>setTimeout(()=>r(map.tts),%d)):Promise.resolve(map[name]||null)};
 })();
 """ % (fail_every, json.dumps(db_rows or []),
-       "tts" if tts else "null", "db" if db else "null", "dl" if downloads else "null")
+       "tts" if tts else "null", "db" if db else "null", "dl" if downloads else "null", tts_delay, tts_delay)
 
 
 BAD_TEXT = re.compile(r"\bundefined\b|\bNaN\b|\[object |\$\{")

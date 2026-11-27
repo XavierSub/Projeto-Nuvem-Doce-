@@ -202,3 +202,17 @@ def test_claude_sem_tts_tambem_fica_so_legenda(make_game):
     assert web_spoken(g) == []
     assert g.p.inner_text("#ntext").strip()
     assert not g.errors, g.errors
+
+
+def test_voz_da_brisa_atrasada_nao_deixa_muda(make_game):
+    """Se a voz da Brisa demorar para carregar, ela começa a falar assim que chegar."""
+    g = make_game(claude=claude_mock(tts_delay=7000))
+    g.p.goto(GAME); g.p.click("#new"); g.p.fill("#nm", "Kai"); g.p.click("#ok")
+    g.p.wait_for_timeout(4500)
+    assert not tts_calls(g), "ainda não deveria ter voz"
+    assert g.p.inner_text("#ntext").strip(), "enquanto isso, a legenda aparece"
+    g.p.wait_for_timeout(3500)
+    g.p.click("#go"); g.wait_tr(); g.p.wait_for_timeout(500)
+    assert any(c["kind"] == "speak" for c in tts_calls(g)), "a Brisa deveria falar depois que a voz chegou"
+    assert web_spoken(g) == []
+    assert not g.errors, g.errors

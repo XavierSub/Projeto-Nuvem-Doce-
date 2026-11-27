@@ -1290,10 +1290,9 @@ let VPREF={engine:'claude',claudeVoice:'airy',webName:'',rate:1};
 try{const s=JSON.parse(localStorage.getItem(VKEY)||'null');if(s&&typeof s==='object')VPREF.rate=Number(s.rate)<.95?.85:1}catch(e){}
 function saveVPref(){try{localStorage.setItem(VKEY,JSON.stringify(VPREF))}catch(e){}}
 function engine(){
-  if(NARR.lock)return NARR.lock;
+  if(NARR.tts)return 'claude';            /* a voz da Brisa chegou (mesmo atrasada): usa ela */
   if(!NARR.ttsReady)return null;
-  NARR.lock=NARR.tts?'claude':'none';
-  return NARR.lock;
+  return 'none';
 }
 const voiceAvail=()=>!!NARR.tts;
 function updVoiceUI(){document.body.classList.toggle('novoice',!voiceAvail())}
@@ -1331,7 +1330,7 @@ function initTTS(tries=0){
       return;
     }
   }catch(e){}
-  if(tries<12)setTimeout(()=>initTTS(tries+1),700);else NARR.ttsReady=true;
+  if(tries<30)setTimeout(()=>initTTS(tries+1),700);else NARR.ttsReady=true;
 }
 
 function talking(on){$('#narr').classList.toggle('talk',on);$('#nstop').classList.toggle('hidden',!on)}
@@ -1360,7 +1359,7 @@ function speakItems(items,append){
   items=items.map(i=>({raw:String(i.text).trim(),text:cleanSpeech(i.text),el:i.el})).filter(i=>i.text);
   if(!NARR.on||!items.length)return;
   const eng=engine();
-  if(eng===null){const w=(NARR.waitN||0);if(w<15){NARR.waitN=w+1;setTimeout(()=>speakItems(items,append),250);return}NARR.ttsReady=true;return speakItems(items,append)}
+  if(eng===null){const w=(NARR.waitN||0);if(w<15){NARR.waitN=w+1;setTimeout(()=>speakItems(items,append),250);return}NARR.waitN=0;setBubble(items[0].raw);scheduleHide(Math.max(3000,items[0].raw.length*60));return}
   if(!append){NARR.seq++;try{if(NARR.web)speechSynthesis.cancel()}catch(e){}clearHL()}
   const seq=NARR.seq;
   setBubble(items[0].raw);
