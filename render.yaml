@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: fuga-nuvem-doce
+    runtime: static
+    buildCommand: echo "Site estático, sem build"
+    staticPublishPath: ./
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache

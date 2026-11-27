@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fuga da Prisão Nuvem Doce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/*CSS*/
+.status .av svg{width:100%;height:100%}
+.rr .av svg{width:100%;height:100%}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hazard"></div>
+  <header>
+    <div class="tag" style="margin:0;font-size:10.5px">🚨 NUVEM DOCE</div>
+    <div class="hud"><div class="pill" id="score">⭐ 0</div><div class="pill" id="timer">0:00</div><button class="mute" id="narrbtn" aria-label="Narração">🎙️</button><button class="mute" id="mute" aria-label="Efeitos sonoros">🔊</button></div>
+  </header>
+  <div class="status hidden" id="status">
+    <div class="av" id="stav"></div>
+    <div><div class="nm" id="stnm"></div><div class="perk" id="stpk"></div></div>
+    <div class="meters">
+      <div class="meter f"><span>🫁</span><div class="bar"><div class="fill" id="mf"></div></div><span class="v" id="mfv"></span></div>
+      <div class="meter d"><span>⛓️</span><div class="bar"><div class="fill" id="md"></div></div><span class="v" id="mdv"></span></div>
+    </div>
+  </div>
+  <div class="prog" id="prog"></div>
+  <main id="screen"></main>
+</div>
+<div class="narr" id="narr" aria-live="polite"><div class="brisa" id="nbrisa"></div><div class="nb"><small>BRISA · NARRADORA</small><span id="ntext"></span><div class="ctl"><button id="nclose" aria-label="Fechar">✕</button><button id="nset" aria-label="Escolher voz">⚙️</button><button id="nstop" class="hidden" aria-label="Parar a voz">⏹</button></div></div></div>
+<script>
+/*JS*/
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+
+  /* ================= ANIMAÇÕES EXTRAS ================= */
+  /* Brilho que passa pelos botões */
+  .btn{position:relative;overflow:hidden}
+  .btn::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite}
+  .btn.ghost::after{display:none}
+  @keyframes shine{0%,60%{left:-60%}100%{left:130%}}
+  /* Pontuação pulando */
+  .pill.bump{animation:bump .5s cubic-bezier(.3,1.6,.5,1)}
+  @keyframes bump{40%{transform:scale(1.35);color:#fff;box-shadow:0 0 16px rgba(245,197,24,.8)}}
+  /* Combo */
+  .combo{position:fixed;left:50%;top:118px;z-index:70;transform:translateX(-50%);pointer-events:none;text-align:center;animation:combo 1.8s cubic-bezier(.2,1.4,.4,1) forwards}
+  .combo b{display:block;font-family:'Black Ops One';font-size:40px;line-height:1;background:linear-gradient(180deg,#fff6a8,#ffb300 45%,#ff4d00);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 #000) drop-shadow(0 0 14px rgba(255,120,0,.8))}
+  .combo small{font-family:'JetBrains Mono',monospace;font-size:12px;color:#ffd27a;letter-spacing:.15em}
+  .combo .fire{font-size:34px;display:inline-block;animation:flame .25s infinite alternate}
+  @keyframes flame{to{transform:scale(1.15) rotate(6deg)}}
+  @keyframes combo{0%{opacity:0;transform:translateX(-50%) scale(.3) rotate(-12deg)}15%{opacity:1;transform:translateX(-50%) scale(1.15) rotate(3deg)}30%{transform:translateX(-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(-40px) scale(.9)}}
+  /* Explosão de estrelas */
+  .star{position:fixed;z-index:65;pointer-events:none;font-size:16px;animation:starfly .9s ease-out forwards}
+  @keyframes starfly{0%{transform:translate(0,0) scale(.4) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1.1) rotate(var(--r));opacity:0}}
+  /* Onda de acerto */
+  .ring{position:fixed;z-index:64;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;border:3px solid #4ade80;pointer-events:none;animation:ringo .7s ease-out forwards}
+  @keyframes ringo{to{transform:scale(9);opacity:0}}
+  /* Glitch no erro */
+  .scene.glitch svg{animation:glitch .5s steps(1)}
+  @keyframes glitch{
+    0%{transform:none;filter:none}
+    15%{transform:translate(-6px,2px);filter:drop-shadow(4px 0 #ff00d4) drop-shadow(-4px 0 #00e5ff);clip-path:inset(10% 0 55% 0)}
+    30%{transform:translate(5px,-3px);clip-path:inset(55% 0 8% 0)}
+    45%{transform:translate(-3px,0);filter:hue-rotate(90deg) saturate(2);clip-path:inset(30% 0 30% 0)}
+    60%{transform:translate(4px,2px);clip-path:none;filter:drop-shadow(-5px 0 #ff00d4) drop-shadow(5px 0 #00e5ff)}
+    80%{transform:translate(-2px,-1px);filter:invert(.15)}
+    100%{transform:none;filter:none;clip-path:none}}
+  .scene .scanlines{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0 2px,transparent 2px 4px);mix-blend-mode:multiply;opacity:.5}
+  /* Poeira flutuando nas cenas */
+  .dust{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .dust i{position:absolute;bottom:-10px;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 6px rgba(255,255,255,.6);animation:dustup linear infinite}
+  @keyframes dustup{0%{transform:translate(0,0);opacity:0}15%{opacity:.9}100%{transform:translate(var(--sx),-230px);opacity:0}}
+  /* Personagem entrando na cena */
+  .enter{animation:enterin .9s cubic-bezier(.3,1.4,.5,1) both}
+  @keyframes enterin{from{transform:translateX(-60px);opacity:0}to{transform:none;opacity:1}}
+  /* Zoom de câmera quando a grade abre */
+  .scene.open svg{animation:camzoom 1.6s ease-in-out}
+  @keyframes camzoom{0%{transform:scale(1)}35%{transform:scale(1.09)}100%{transform:scale(1)}}
+  .scene.open::after{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(255,236,150,.45),transparent 65%);animation:fl 1.4s forwards;pointer-events:none}
+  /* Portas de aço na transição */
+  .tr{background:transparent!important}
+  .tr .dl,.tr .dr{position:absolute;top:0;bottom:0;width:51%;background:linear-gradient(90deg,#2b2f35,#59616b 40%,#3a3f46 60%,#24272c);box-shadow:inset 0 0 0 3px #15171a;z-index:0}
+  .tr .dl{left:0;animation:dclose .38s cubic-bezier(.7,0,.9,.6) both}
+  .tr .dr{right:0;animation:dclose2 .38s cubic-bezier(.7,0,.9,.6) both}
+  .tr .dl::before,.tr .dr::before{content:'';position:absolute;inset:18px;background:repeating-linear-gradient(0deg,transparent 0 44px,rgba(0,0,0,.35) 44px 47px),radial-gradient(circle at 12px 12px,#9aa3ad 3px,transparent 4px) 0 0/48px 48px;opacity:.7}
+  .tr .dl::after{content:'';position:absolute;right:0;top:0;bottom:0;width:8px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 10px,#111 10px 20px)}
+  .tr.extra .dl,.tr.extra .dr{background:linear-gradient(90deg,#3a1d1d,#6b2b2b 40%,#4a2222 60%,#2a1414)}
+  @keyframes dclose{from{transform:translateX(-100%)}to{transform:none}}
+  @keyframes dclose2{from{transform:translateX(100%)}to{transform:none}}
+  .tr .box,.tr .sweep,.tr .strip,.tr .skip{z-index:2}
+  .tr .sweep{opacity:.6}
+  .tr .slam{position:absolute;inset:0;z-index:1;pointer-events:none;animation:slam2 .5s .36s both}
+  @keyframes slam2{0%{background:rgba(255,255,255,.7)}100%{background:transparent}}
+  .tr.shakeit{animation:trshake .35s .36s}
+  @keyframes trshake{25%{transform:translate(-8px,4px)}50%{transform:translate(7px,-3px)}75%{transform:translate(-4px,2px)}}
+  .tr.out{animation:none!important;pointer-events:none}
+  .tr.out .dl{animation:dopen .55s ease-in forwards}
+  .tr.out .dr{animation:dopen2 .55s ease-in forwards}
+  .tr.out .box,.tr.out .sweep,.tr.out .strip,.tr.out .skip{animation:fadeo .25s forwards}
+  @keyframes dopen{to{transform:translateX(-102%)}}
+  @keyframes dopen2{to{transform:translateX(102%)}}
+  @keyframes fadeo{to{opacity:0}}
+  /* Fogos no final */
+  #fw{position:fixed;inset:0;z-index:58;pointer-events:none}
+  /* Certificado: botões */
+  .certbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:-4px}
+  .certbtns .btn{margin-top:0;font-size:14.5px;padding:13px 8px}
+  .toast{position:fixed;left:50%;bottom:130px;transform:translateX(-50%);z-index:95;background:#0f1012;border:1px solid var(--green);color:var(--text);padding:10px 14px;border-radius:12px;font-size:14px;animation:in .3s}
+  @media print{
+    body *{visibility:hidden!important}
+    .cert,.cert *{visibility:visible!important}
+    .cert{position:fixed;left:0;top:0;width:100%;margin:0;box-shadow:none}
+    body{background:#fff!important;padding:0}
+  }
