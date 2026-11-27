@@ -183,8 +183,9 @@ def test_conversa_da_rodinha_lida_em_ordem(make_game):
 
 
 def test_sem_voz_da_brisa_fica_so_legenda(make_game):
-    """Onde a voz da Brisa não existe (ex.: site próprio, celular), nada de voz robótica."""
-    g = make_game()  # sem claude.ai
+    """Sem a voz da Brisa e sem áudios gravados: só legenda, nunca voz robótica."""
+    g = make_game()  # sem claude.ai e sem áudios gravados
+    g.p.route("**/audio/manifest.json", lambda r: r.fulfill(status=200, content_type="application/json", body="{}"))
     g.p.goto(GAME); g.p.wait_for_selector("#new")
     assert g.p.is_visible(".novoice-note")
     g.p.click("#new"); g.p.fill("#nm", "Kai"); g.p.click("#ok"); g.p.click("#go"); g.wait_tr()
@@ -197,6 +198,7 @@ def test_sem_voz_da_brisa_fica_so_legenda(make_game):
 
 def test_claude_sem_tts_tambem_fica_so_legenda(make_game):
     g = make_game(claude=claude_mock(tts=False))
+    g.p.route("**/audio/manifest.json", lambda r: r.fulfill(status=200, content_type="application/json", body="{}"))
     g.start("Kai")
     g.p.wait_for_timeout(500)
     assert web_spoken(g) == []
@@ -214,5 +216,17 @@ def test_voz_da_brisa_atrasada_nao_deixa_muda(make_game):
     g.p.wait_for_timeout(3500)
     g.p.click("#go"); g.wait_tr(); g.p.wait_for_timeout(500)
     assert any(c["kind"] == "speak" for c in tts_calls(g)), "a Brisa deveria falar depois que a voz chegou"
+    assert web_spoken(g) == []
+    assert not g.errors, g.errors
+
+
+def test_celular_no_claude_toca_audios_gravados(make_game):
+    """No claude.ai sem a voz da Brisa (ex.: celular), toca os áudios gravados."""
+    from test_audio import AUDIO_SPY
+    g = make_game(claude=claude_mock(tts=False), extra_js=AUDIO_SPY)
+    g.start("Kai")
+    g.p.wait_for_timeout(1500)
+    assert g.p.evaluate("engine()") == "audio"
+    assert any(e["ev"] == "play" for e in g.p.evaluate("window.__aud"))
     assert web_spoken(g) == []
     assert not g.errors, g.errors

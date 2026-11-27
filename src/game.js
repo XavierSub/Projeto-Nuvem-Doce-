@@ -1292,7 +1292,6 @@ function saveVPref(){try{localStorage.setItem(VKEY,JSON.stringify(VPREF))}catch(
 /* Áudios gravados da Brisa (pasta audio/, usada no site próprio/Render) */
 const AUDIO={map:null,ready:false,base:'audio/',cur:null,q:[],waitT:null};
 function initAudio(){
-  if(window.top!==window){AUDIO.ready=true;return}
   try{
     fetch(AUDIO.base+'manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(m=>{
       if(m&&typeof m==='object'&&!Array.isArray(m)&&Object.keys(m).length)AUDIO.map=m;
